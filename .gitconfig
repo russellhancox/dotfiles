@@ -1,0 +1,7 @@
+[user]
+	email = russell@hancox.us
+	name = Russell Hancox
+[core]
+	editor = emacs
+[merge]
+	tool = diff

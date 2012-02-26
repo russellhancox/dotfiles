@@ -8,7 +8,7 @@
 set -o emacs
 
 # Set editor
-EDITOR=emacs
+export EDITOR=emacs
 
 # Enable Bash completions where available
 [[ -e "/usr/local/etc/bash_completion.d/tmux" ]] && source /usr/local/etc/bash_completion.d/tmux
@@ -40,11 +40,9 @@ function ps1
   local DEFAULT="\[\033[0;00m\]"
   
   if [[ -n $(type -t __git_ps1) ]]; then
-    PS1="${YELLOW}\h ${RED}\W${GREEN}\$(__git_ps1) ${BLUE}\$ ${DEFAULT}"
-		#export PS1
+    export PS1="${YELLOW}\h ${RED}\W${GREEN}\$(__git_ps1) ${BLUE}\$ ${DEFAULT}"
   else
-    PS1="${YELLOW}\h ${RED}\W ${BLUE}\$ ${DEFAULT}"
+    export PS1="${YELLOW}\h ${RED}\W ${BLUE}\$ ${DEFAULT}"
   fi
 }
 ps1
-

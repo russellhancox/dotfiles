@@ -176,4 +176,4 @@ Stores the window cofiguration before creating and/or switching window."
 	      (comint-send-input))
 	  ))))
 
-(provide 'shell-toggle)
+(provide 'rah-shell-toggle)
