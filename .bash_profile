@@ -2,12 +2,10 @@
 [[ $- != *i* ]] && return
 
 # If not running under tmux, attach to tmux shells session.
-[[ $TERM != "screen" ]] && tmux attach -t shells && exit
+[[ $TERM != "screen" ]] && tmux attach -t shells
 
-# Enable emacs mode
+# I use Emacs
 set -o emacs
-
-# Set editor
 export EDITOR=emacs
 
 # Enable Bash completions where available
@@ -18,19 +16,35 @@ export EDITOR=emacs
 alias l="ls -l"
 alias la="ls -al"
 alias e="emacs"
+alias sdd="sudo \${!!}"
 alias psgrep="ps -ef | grep -v grep | grep"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 
+# Configure shell options
+shopt -s cdspell
+shopt -s histappend
+unset HISTFILESIZE
+HISTSIZE=1000000
+HISTCONTROL=ignoreboth
+HISTIGNORE='ls:bg:fg:history'
+HISTTIMEFORMAT='%F %T '
+PROMPT_COMMAND='history -a; history -n'
+stty -ixon
+
 function os_specifics
 {
-  if [[ `uname` == 'Darwin' ]]; then
-    alias ls="ls -Gh"
-  fi
+  case `uname` in
+      "Darwin")
+          alias ls="ls -Gh"
+          ;;
+      "Linux")
+          alias ls="ls --color -h"
+          ;;
+  esac
 }
 os_specifics
 
-
-# Set shell line 
+# Set shell line
 function ps1
 {
   local BLUE="\[\033[0;34m\]"
@@ -38,7 +52,7 @@ function ps1
   local YELLOW="\[\033[0;33m\]"
   local GREEN="\[\033[0;32m\]"
   local DEFAULT="\[\033[0;00m\]"
-  
+
   if [[ -n $(type -t __git_ps1) ]]; then
     export PS1="${YELLOW}\h ${RED}\W${GREEN}\$(__git_ps1) ${BLUE}\$ ${DEFAULT}"
   else
@@ -46,3 +60,6 @@ function ps1
   fi
 }
 ps1
+
+# If a local customization file exists, use it..
+[[ -e "~/.bash_profile.local" ]] && source ~/.bash_profile.local
