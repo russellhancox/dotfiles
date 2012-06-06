@@ -10,11 +10,10 @@
 
   Bundle 'gmarik/vundle'
   Bundle 'Lokaltog/vim-powerline'
-  Bundle 'Lokaltog/vim-distinguished'
   Bundle 'Lokaltog/vim-easymotion'
   Bundle 'scrooloose/syntastic'
-  Bundle 'tpope/vim-fugitive'
   Bundle 'scrooloose/nerdtree'
+  Bundle 'tpope/vim-fugitive'
 " }}}
 
 " Basic Configuration {{{
@@ -22,7 +21,7 @@
   syntax on
   set t_Co=256
 
-  colorscheme distinguished
+  :silent! colorscheme solarized
 
   set autoindent
   set backspace=indent,eol,start    " Allow backspacing everywhere (i-mode)

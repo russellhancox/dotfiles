@@ -3,7 +3,7 @@
 
 # I use Vim
 set -o vi
-hash vim >&- && export EDITOR='vim'
+hash vim >/dev/null 2>&1 && export EDITOR='vim'
 
 # Enable Bash completions where available
 [[ -e "/usr/local/etc/bash_completion.d/tmux" ]] && source /usr/local/etc/bash_completion.d/tmux
