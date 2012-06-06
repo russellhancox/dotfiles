@@ -1,6 +1,3 @@
 [user]
 	email = russell@hancox.us
 	name = Russell Hancox
-[core]
-[merge]
-	tool = diff
