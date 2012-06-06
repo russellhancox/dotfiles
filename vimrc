@@ -8,12 +8,12 @@
   syntax on
   set t_Co=256
 
-  :silent! colorscheme solarized
+  silent! colorscheme solarized
 
   set autoindent
   set backspace=indent,eol,start    " Allow backspacing everywhere (i-mode)
   set nobackup                      " Don't leave backup files everywhere
-  set colorcolumn=80                " Leave a line down the screen at 80c
+  silent! set colorcolumn=80        " Leave a line down the screen at 80c
   set encoding=utf-8
   set expandtab                     " Expand tabs to spaces
   set hidden                        " Allow moving to a different buffer
