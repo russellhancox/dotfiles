@@ -1,23 +1,10 @@
-" Disable vi compatiblity {{{
+" Disable vi compatiblity
   set nocompatible
-" }}}
 
-" Enable Vundle and plugins {{{
-  filetype off
+" Load Vundle and other bundles
+  source ~/.vim/config/bundles.vim
 
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
-
-  Bundle 'gmarik/vundle'
-  Bundle 'Lokaltog/vim-powerline'
-  Bundle 'Lokaltog/vim-easymotion'
-  Bundle 'scrooloose/syntastic'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'tpope/vim-fugitive'
-" }}}
-
-" Basic Configuration {{{
-  filetype plugin indent on
+" Basic configuration
   syntax on
   set t_Co=256
 
@@ -43,26 +30,23 @@
   set smarttab                      " Inserting tabs at start of line
   set nowrap                        " Don't wrap long lines
 
-  " Set tab width {{{
-    let g:tabwidth=2
+" Set tab width
+  let g:tabwidth=2
 
-    exec 'set shiftwidth='  . g:tabwidth
-    exec 'set softtabstop=' . g:tabwidth
-    exec 'set tabstop='     . g:tabwidth
-  " }}}
+  exec 'set shiftwidth='  . g:tabwidth
+  exec 'set softtabstop=' . g:tabwidth
+  exec 'set tabstop='     . g:tabwidth
 
-  " Wildmenu {{{
-    set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj
-    set wildignore+=*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*/.tox/*,*.egg-info/*
-    set wildmenu
-    set wildmode=list:longest,full
-  " }}}
-" }}}
+" Wildmenu
+  set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj
+  set wildignore+=*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*/.tox/*,*.egg-info/*
+  set wildmenu
+  set wildmode=list:longest,full
 
-" Process other config {{{
+
+" Process other configs
   runtime! config/*.vim
 
   if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
   endif
-" }}}
