@@ -1,9 +1,6 @@
 # Don't try anything if the shell isn't interactive
 [[ $- != *i* ]] && return
 
-# If not running under tmux, attach to tmux shells session.
-[[ $TERM != "screen-256color" ]] && tmux attach -t shells && exit
-
 # I use Vim
 set -o vi
 hash vim >&- && export EDITOR='vim'
