@@ -1,5 +1,3 @@
-.recentf
 .DS_Store
-emacs.d/.recentf
-emacs.d/autosaves
-emacs.d/backups
+.git
+.svn
