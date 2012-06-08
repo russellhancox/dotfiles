@@ -2,7 +2,6 @@
 [[ $- != *i* ]] && return
 
 # I use Vim
-set -o vi
 hash vim >/dev/null 2>&1 && export EDITOR='vim'
 
 # Enable Bash completions where available
@@ -56,4 +55,4 @@ function ps1
 ps1
 
 # If a local customization file exists, use it..
-[[ -e "~/.bash_profile.local" ]] && source ~/.bash_profile.local
+[[ -e "${HOME}/bash_profile.local" ]] && source ${HOME}/.bash_profile.local
