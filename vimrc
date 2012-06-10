@@ -1,6 +1,3 @@
-" Disable vi compatiblity
-  set nocompatible
-
 " Load Vundle and other bundles
   source ~/.vim/config/bundles.vim
 
@@ -25,6 +22,8 @@
                                     " found
   set laststatus=2                  " Show status line on penultimate line
   set number                        " Show line number gutter
+  set shortmess+=Ia                 " Hide/shorten certain messages
+  set shortmess-=l
   set showcmd                       " Display incomplete commands
   set noshowmode                    " Don't show mode on last line
   set smarttab                      " Inserting tabs at start of line

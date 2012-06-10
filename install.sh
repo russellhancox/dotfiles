@@ -11,7 +11,7 @@ if [[ ! -f "${HOME}/vim/bundle/vundle/README.md" ]]; then
   rm -fr ${HOME}/.vim/bundle/vundle/* ${HOME}/.vim/bundle/vundle/.*
   git clone https://github.com/gmarik/vundle.git ${HOME}/.vim/bundle/vundle
   echo "Installing other bundles"
-  vim -u ~/.vim/config/bundles.vim +BundleInstall +quitall
+  vim -N -u ~/.vim/config/bundles.vim +BundleInstall +quitall
 else
   echo "Skipping vundle download"
 fi
