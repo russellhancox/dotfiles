@@ -7,23 +7,23 @@
 
   silent! colorscheme solarized
 
-  set autoindent
+  set autoindent                    " Auto indent new lines, brackets etc.
   set backspace=indent,eol,start    " Allow backspacing everywhere (i-mode)
   set nobackup                      " Don't leave backup files everywhere
   silent! set colorcolumn=80        " Leave a line down the screen at 80c
-  set encoding=utf-8
+  set encoding=utf-8                " Default encoding
   set expandtab                     " Expand tabs to spaces
   set hidden                        " Allow moving to a different buffer
                                     " when the current one is not saved
   set history=50                    " Keep 50 lines of command history
   set hlsearch                      " Highlight search results
-  set ignorecase
-  set incsearch                     " Begin searching as soon as matches are
-                                    " found
+  set ignorecase                    " Ignore case when searching
+  set incsearch                     " Search as soon as matches are found
   set laststatus=2                  " Show status line on penultimate line
   set number                        " Show line number gutter
+  set scrolloff=5                   " Keep cursor 5 lines from top/bottom
   set shortmess+=Ia                 " Hide/shorten certain messages
-  set shortmess-=l
+  set shortmess-=l                  " ^^^
   set showcmd                       " Display incomplete commands
   set noshowmode                    " Don't show mode on last line
   set smarttab                      " Inserting tabs at start of line
