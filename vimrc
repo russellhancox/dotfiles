@@ -5,6 +5,7 @@
   syntax on
   set t_Co=256
 
+  set background=dark
   silent! colorscheme solarized
 
   set autoindent                    " Auto indent new lines, brackets etc.
