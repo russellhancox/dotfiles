@@ -21,6 +21,7 @@
   set ignorecase                    " Ignore case when searching
   set incsearch                     " Search as soon as matches are found
   set laststatus=2                  " Show status line on penultimate line
+  set mouse=a                       " Enable mouse support
   set number                        " Show line number gutter
   set scrolloff=5                   " Keep cursor 5 lines from top/bottom
   set shortmess+=Ia                 " Hide/shorten certain messages
