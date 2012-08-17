@@ -9,6 +9,7 @@ hash vim >/dev/null 2>&1 && export EDITOR='vim'
 [[ -e "/usr/local/etc/bash_completion.d/git" ]] && source /usr/local/etc/bash_completion.d/git
 
 # Generic aliases
+alias l="ls"
 alias ll="ls -l"
 alias la="ls -al"
 alias psgrep="ps -ef | head -n1 && ps -ef | grep -v grep | grep"
@@ -24,20 +25,16 @@ HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 stty -ixon
 
-function os_specifics
-{
-  case `uname` in
-      "Darwin")
-          alias ls="ls -Gh"
-          ;;
-      "Linux")
-          alias ls="ls --color -h"
-          alias ps="ps f"
-          [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
-          ;;
-  esac
-}
-os_specifics
+case `uname` in
+  "Darwin")
+      alias ls="ls -Gh"
+      ;;
+  "Linux")
+      alias ls="ls --color -h"
+      alias ps="ps f"
+      [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
+      ;;
+esac
 
 # Set shell line
 function ps1
