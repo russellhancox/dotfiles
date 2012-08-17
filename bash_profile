@@ -11,7 +11,7 @@ hash vim >/dev/null 2>&1 && export EDITOR='vim'
 # Generic aliases
 alias ll="ls -l"
 alias la="ls -al"
-alias psgrep="ps -ef | grep -v grep | grep"
+alias psgrep="ps -ef | head -n1 && ps -ef | grep -v grep | grep"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 
 # Configure shell options
