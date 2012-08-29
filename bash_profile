@@ -16,6 +16,7 @@ alias psgrep="ps -ef | head -n1 && ps -ef | grep -v grep | grep"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 
 # Configure shell options
+export GREP_OPTIONS="--color=auto"
 shopt -s cdspell
 shopt -s histappend
 unset HISTFILESIZE
