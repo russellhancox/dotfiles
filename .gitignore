@@ -3,3 +3,4 @@ emacs.d/backups
 emacs.d/.recentf
 vim/bundle/*
 vim/sessions
+.DS_Store
