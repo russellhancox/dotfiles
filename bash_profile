@@ -14,6 +14,7 @@ alias ll="ls -l"
 alias la="ls -al"
 alias psgrep="ps -ef | head -n1 && ps -ef | grep -v grep | grep"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
+alias killtabs="sed -i 's/	/  /g'"
 
 # Configure shell options
 export GREP_OPTIONS="--color=auto"
