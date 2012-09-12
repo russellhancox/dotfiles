@@ -7,4 +7,4 @@ if !exists(":DiffOrig")
 endif
 
 " Clear the current search string (to remove highlighting..)
-command C let @/=""
+nmap <silent> <Leader>c :nohlsearch<CR>

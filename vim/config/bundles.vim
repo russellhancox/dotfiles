@@ -6,12 +6,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'croaker/mustang-vim.git'
 Bundle 'duff/vim-scratch'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
+Bundle 'msanders/snipmate.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/sessionman.vim'
+Bundle 'wincent/Command-T'
 
 filetype plugin indent on

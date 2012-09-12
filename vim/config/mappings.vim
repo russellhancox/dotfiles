@@ -1,17 +1,17 @@
+" Map ; to : to save typing
+nnoremap ; :
+
 " Map Control + {h, j, k, l} to move windows
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-l> :wincmd l<CR>
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " Map ,e to edit a file in the current working directory
-nmap <silent> ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+nmap <silent> <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Map ,cd to change cwd to the directory of the file currently being edited
-nmap <silent> ,cd :cd %:p:h <CR>
-
-" Map <Leader>t to NERDTreeToggle (keeping window selection)
-nmap <silent> <Leader>t :NERDTreeToggle<CR> :wincmd p<CR>
+nmap <silent> <Leader>cd :cd %:p:h <CR>
 
 " Map <Leader>... to …
 imap <silent> <Leader>... …
@@ -25,10 +25,14 @@ noremap <Right> <nop>
 " Ctrl-P to toggle paste mode
 set pastetoggle=<C-P>
 
-" Map Ctrl-T to delete the last path component when entering commands
-cnoremap <C-t> <C-\>e(<SID>RemoveLastPathComponent())<CR>
-function! s:RemoveLastPathComponent()
-  let c = getcmdline()
-  let cRoot = fnamemodify(c, ':r')
-  return (c != cRoot ? cRoot : substitute(c, '\%(\\ \|[\\/]\@!\f\)\+[\\/]\=$\|.$', '', ''))
-endfunction
+" Map w!! to sudo save
+cmap w!! w !sudo tee % >/dev/null
+
+" Mappings for Mac pbcopy
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    vmap <C-x> :!pbcopy<CR>
+    vmap <C-c> :w !pbcopy<CR><CR>
+  endif
+endif

@@ -1,21 +1,23 @@
 " Load Vundle and other bundles
   source ~/.vim/config/bundles.vim
+" NB: filetype plugin indent on is called at the end of that file
 
 " Basic configuration
   syntax on
-  
+
   set background=dark
-  silent! colorscheme solarized
+  silent! colorscheme mustang
 
   set autoindent                    " Auto indent new lines, brackets etc.
   set backspace=indent,eol,start    " Allow backspacing everywhere (i-mode)
   set nobackup                      " Don't leave backup files everywhere
   silent! set colorcolumn=80        " Leave a line down the screen at 80c
+  set copyindent                    " Copy previous indentation when indenting
   set encoding=utf-8                " Default encoding
   set expandtab                     " Expand tabs to spaces
   set hidden                        " Allow moving to a different buffer
                                     " when the current one is not saved
-  set history=50                    " Keep 50 lines of command history
+  set history=1000                  " Keep 1000 lines of command history
   set hlsearch                      " Highlight search results
   set ignorecase                    " Ignore case when searching
   set incsearch                     " Search as soon as matches are found
@@ -28,6 +30,8 @@
   set showcmd                       " Display incomplete commands
   set noshowmode                    " Don't show mode on last line
   set smarttab                      " Inserting tabs at start of line
+  set noswapfile                    " Grr! Swapfiles!
+  set undolevels=1000               " Lots of undo
   set nowrap                        " Don't wrap long lines
 
 " Set tab width
@@ -42,7 +46,6 @@
   set wildignore+=*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*/.tox/*,*.egg-info/*
   set wildmenu
   set wildmode=list:longest,full
-
 
 " Process other configs
   runtime! config/*.vim
