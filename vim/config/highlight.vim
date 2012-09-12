@@ -1,7 +1,3 @@
-" Highlight matching parentheses {{{
-  hi Matchparen ctermbg=4
-" }}}
-
 " Highlight certain chars:
 set list
 
