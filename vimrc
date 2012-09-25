@@ -30,7 +30,6 @@
   set showcmd                       " Display incomplete commands
   set noshowmode                    " Don't show mode on last line
   set smarttab                      " Inserting tabs at start of line
-  set noswapfile                    " Grr! Swapfiles!
   set undolevels=1000               " Lots of undo
   set nowrap                        " Don't wrap long lines
 
