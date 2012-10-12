@@ -1,3 +1,6 @@
 [user]
-	email = russell@hancox.us
-	name = Russell Hancox
+email = russell@hancox.us
+name = Russell Hancox
+
+[alias]
+vimdiff = "difftool -y -t vimdiff -R"
