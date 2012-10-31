@@ -12,7 +12,7 @@ hash vim >/dev/null 2>&1 && export EDITOR='vim'
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -al"
-alias psgrep="ps -ef | head -n1 && ps -ef | grep -v grep | grep"
+alias psgrep="ps -ef | head -n1 && ps -ef | grep -v grep | grep -i"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 
