@@ -8,6 +8,9 @@ hash vim >/dev/null 2>&1 && export EDITOR='vim'
 [[ -e "/usr/local/etc/bash_completion.d/tmux" ]] && source /usr/local/etc/bash_completion.d/tmux
 [[ -e "/usr/local/etc/bash_completion.d/git" ]] && source /usr/local/etc/bash_completion.d/git
 
+# Enable Z
+source ${HOME}/.dotfiles/z/z.sh
+
 # Generic aliases
 alias l="ls"
 alias ll="ls -l"

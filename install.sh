@@ -8,7 +8,7 @@ done
 
 if [[ ! -f "${HOME}/vim/bundle/vundle/README.md" ]]; then
   echo "Installing latest vundle bundle"
-  rm -fr ${HOME}/.vim/bundle/vundle/* ${HOME}/.vim/bundle/vundle/.*
+  rm -fr ${HOME}/.vim/bundle/vundle/* ${HOME}/.vim/bundle/vundle/.* 2>/dev/null
   git clone https://github.com/gmarik/vundle.git ${HOME}/.vim/bundle/vundle
   echo "Installing other bundles"
   vim -N -u ~/.vim/config/bundles.vim +BundleInstall +quitall
@@ -20,6 +20,12 @@ if [[ ! -f "${HOME}/vim/bundle/vundle/README.md" ]]; then
   popd
 else
   echo "Skipping vundle download"
+fi
+
+# If running on a Mac, set-up Mac defaults..
+if uname | grep -q Darwin; then
+  echo "Running on a Mac, setting Mac defaults"
+  ${HOME}/.dotfiles/osx_defaults.sh
 fi
 
 echo "Complete"

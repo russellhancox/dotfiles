@@ -9,6 +9,7 @@
   silent! colorscheme mustang
 
   set autoindent                    " Auto indent new lines, brackets etc.
+  set autoread                      " Reload files changed outside of VIM.
   set backspace=indent,eol,start    " Allow backspacing everywhere (i-mode)
   set nobackup                      " Don't leave backup files everywhere
   silent! set colorcolumn=80        " Leave a line down the screen at 80c
@@ -40,8 +41,13 @@
   exec 'set softtabstop=' . g:tabwidth
   exec 'set tabstop='     . g:tabwidth
 
+" Persistent undo
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+
 " Wildmenu
-  set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj
+  set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*DS_Store*
   set wildignore+=*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*/.tox/*,*.egg-info/*
   set wildmenu
   set wildmode=list:longest,full
