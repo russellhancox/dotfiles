@@ -42,9 +42,9 @@
   exec 'set tabstop='     . g:tabwidth
 
 " Persistent undo
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
+  silent! !mkdir ~/.vim/backups > /dev/null 2>&1
+  silent! set undodir=~/.vim/backups
+  silent! set undofile
 
 " Wildmenu
   set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*DS_Store*
