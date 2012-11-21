@@ -67,7 +67,7 @@ function ps1
   local CYAN="\[$(tput setaf 6)\]"
   local DEFAULT='\[$(tput sgr0)\]'
 
-  PS1="${MAGENTA}[\!] ${YELLOW}\u@${HOSTNAME} ${RED}\w ${GREEN}$(git_prompt)"
+  PS1="${MAGENTA}[\!] ${YELLOW}\u@${HOSTNAME} ${RED}\w ${GREEN}\$(git_prompt)"
   PS1="${PS1}\n${BLUE}$ ${DEFAULT}"
   export PS1
 }
