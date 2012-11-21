@@ -8,9 +8,6 @@ hash vim >/dev/null 2>&1 && export EDITOR='vim'
 [[ -e "/usr/local/etc/bash_completion.d/tmux" ]] && source /usr/local/etc/bash_completion.d/tmux
 [[ -e "/usr/local/etc/bash_completion.d/git" ]] && source /usr/local/etc/bash_completion.d/git
 
-# Enable Z
-source ${HOME}/.dotfiles/z/z.sh
-
 # Generic aliases
 alias l="ls"
 alias ll="ls -l"
@@ -50,9 +47,9 @@ function git_prompt
   if [ $? -eq 0 ]; then
     GIT_BRANCH=$(git branch | grep '*' | awk '{print $2}')
     if echo ${GIT_STATUS} | grep -q 'M'; then
-      echo "[${GIT_BRANCH} M]"
+      echo "[${GIT_BRANCH} M] "
     else
-      echo "[${GIT_BRANCH}]"
+      echo "[${GIT_BRANCH}] "
     fi
   fi
 }
@@ -67,8 +64,11 @@ function ps1
   local CYAN="\[$(tput setaf 6)\]"
   local DEFAULT='\[$(tput sgr0)\]'
 
-  PS1="${MAGENTA}[\!] ${YELLOW}\u@${HOSTNAME} ${RED}\w ${GREEN}\$(git_prompt)"
-  PS1="${PS1}\n${BLUE}$ ${DEFAULT}"
+  PS1="${MAGENTA}[\!] "
+  PS1="${PS1}${YELLOW}\u@${HOSTNAME} "
+  PS1="${PS1}${RED}\W "
+  PS1="${PS1}${GREEN}\$(git_prompt)"
+  PS1="${PS1}${BLUE}$ ${DEFAULT}"
   export PS1
 }
 ps1
