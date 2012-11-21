@@ -33,29 +33,43 @@ stty -ixon
 case `uname` in
   "Darwin")
       alias ls="ls -Gh"
+      export HOSTNAME=$(scutil --get ComputerName)
       ;;
   "Linux")
       alias ls="ls --color -h"
       alias ps="ps f"
+      export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
       [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
       ;;
 esac
 
 # Set shell line
+function git_prompt
+{
+  GIT_STATUS=$(git status --porcelain 2>&1)
+  if [ $? -eq 0 ]; then
+    GIT_BRANCH=$(git branch | grep '*' | awk '{print $2}')
+    if echo ${GIT_STATUS} | grep -q 'M'; then
+      echo "[${GIT_BRANCH} M]"
+    else
+      echo "[${GIT_BRANCH}]"
+    fi
+  fi
+}
 function ps1
 {
-  local BLUE="\[\033[0;34m\]"
-  local RED="\[\033[0;31m\]"
-  local YELLOW="\[\033[0;33m\]"
-  local GREEN="\[\033[0;32m\]"
-  local DEFAULT="\[\033[0;00m\]"
-  hostname=`hostname | cut -d . -f 1`
+  local BOLD="\[$(tput bold)\]"
+  local RED="\[$(tput setaf 1)\]"
+  local GREEN="\[$(tput setaf 2)\]"
+  local YELLOW="\[$(tput setaf 3)\]"
+  local BLUE="\[$(tput setaf 4)\]"
+  local MAGENTA="\[$(tput setaf 5)\]"
+  local CYAN="\[$(tput setaf 6)\]"
+  local DEFAULT='\[$(tput sgr0)\]'
 
-  if [[ -n $(type -t __git_ps1) ]]; then
-    export PS1="${YELLOW}${hostname} ${RED}\W${GREEN}\$(__git_ps1) ${BLUE}\$ ${DEFAULT}"
-  else
-    export PS1="${YELLOW}${hostname} ${RED}\W ${BLUE}\$ ${DEFAULT}"
-  fi
+  PS1="${MAGENTA}[\!] ${YELLOW}\u@${HOSTNAME} ${RED}\w ${GREEN}$(git_prompt)"
+  PS1="${PS1}\n${BLUE}$ ${DEFAULT}"
+  export PS1
 }
 ps1
 
