@@ -19,10 +19,9 @@ alias killtabs="sed -i 's/	/  /g'"
 # Configure shell options
 export GREP_OPTIONS="--color=auto"
 shopt -s cdspell
-shopt -s histappend
 unset HISTFILESIZE
 HISTSIZE=1000000
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 stty -ixon
