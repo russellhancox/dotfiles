@@ -8,11 +8,12 @@ Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'croaker/mustang-vim.git'
 Bundle 'duff/vim-scratch'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'msanders/snipmate.vim'
 Bundle 'rodjek/vim-puppet'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
-Bundle 'wincent/Command-T'
 
 filetype plugin indent on
