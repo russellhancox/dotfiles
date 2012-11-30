@@ -20,12 +20,6 @@ rm -fr ${HOME}/.vim/bundle/vundle/* ${HOME}/.vim/bundle/vundle/.* 2>/dev/null
 git clone https://github.com/gmarik/vundle.git ${HOME}/.vim/bundle/vundle
 echo "Installing other vim bundles"
 vim -N -u ${HOME}/.vim/config/bundles.vim +BundleInstall +quitall
-echo "Building Command-T bundle"
-pushd .
-cd ${HOME}/.vim/bundle/Command-T/ruby/command-t
-ruby extconf.rb
-make
-popd
 
 # If running on a Mac, set-up Mac defaults..
 if uname | grep -q Darwin; then
