@@ -22,8 +22,8 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
-" Ctrl-P to toggle paste mode
-set pastetoggle=<C-P>
+" Leader P to toggle paste mode
+set pastetoggle=<Leader>p
 
 " Map w!! to sudo save
 cmap w!! w !sudo tee % >/dev/null
