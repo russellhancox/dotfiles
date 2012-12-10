@@ -4,3 +4,5 @@ name = Russell Hancox
 
 [alias]
 vimdiff = "difftool -y -t vimdiff -R"
+[push]
+	default = current
