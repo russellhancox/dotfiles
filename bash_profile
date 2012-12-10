@@ -26,6 +26,10 @@ HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 stty -ixon
 
+# Configure Ctrl+W to backwards-kill-word so I can Ctrl+W with file paths
+stty werase undef
+bind '"\C-w": backward-kill-word'
+
 case `uname` in
   "Darwin")
       alias ls="ls -Gh"
