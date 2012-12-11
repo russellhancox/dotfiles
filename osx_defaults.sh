@@ -152,6 +152,9 @@ sleep 1 # Wait a bit to make sure the theme is loaded
 defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark"
 defaults write com.apple.terminal "Startup Window Settings" -string "Solaried Dark"
 
+# Install bpython
+easy_install bpython >/dev/null 2>&1
+
 ###############################################################################
 # Misc
 ###############################################################################
