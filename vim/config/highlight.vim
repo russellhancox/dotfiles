@@ -13,4 +13,5 @@ set listchars+=extends:#
 
 " For certain filetypes this highlighting is annoying
 autocmd filetype html,xml,make set nolist
+autocmd filetype html,xml,make set noexpandtab
 au BufRead,BufNewFile *.make set filetype=make
