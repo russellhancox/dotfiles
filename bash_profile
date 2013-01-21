@@ -33,6 +33,7 @@ bind '"\C-w": backward-kill-word'
 case `uname` in
   "Darwin")
       alias ls="ls -Gh"
+      alias catplist="plutil -convert xml1 -o -"
       export HOSTNAME=$(scutil --get ComputerName)
       ;;
   "Linux")
