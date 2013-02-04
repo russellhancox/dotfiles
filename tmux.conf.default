@@ -43,12 +43,20 @@ set -g base-index 1
 setw -g aggressive-resize on
 
 # Statusbar
-set -g status on
-set -g status-left ""
-set -g status-right "#(hostname -s)"
-set -g status-justify left
-set -g window-status-format "#I #W "
-set -g window-status-current-format "#I #W "
+#set -g status on
+#set -g status-left ""
+#set -g status-right "#(hostname -s)"
+#set -g status-justify left
+#set -g window-status-format "#I #W "
+#set -g window-status-current-format "#I #W "
+set-option -g status on
+set-option -g status-interval 2
+set-option -g status-utf8 on
+set-option -g status-justify "centre"
+set-option -g status-left-length 60
+set-option -g status-right-length 90
+set-option -g status-left "#(~/.dotfiles/tmux-powerline/powerline.sh left)"
+set-option -g status-right "#(~/.dotfiles/tmux-powerline/powerline.sh right)"
 
 # Colors (Solarized)
 set-option -g status-bg colour235 #base02
