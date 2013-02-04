@@ -1,18 +1,19 @@
-[[ ${PWD} != ${HOME} ]] && (echo "Must be run from ${HOME}" && exit 0)
-hash git >/dev/null 2>&1 || (echo "Please install Git" && exit 0)
-
-echo "Updating submodules"
-git submodule init
-git submodule update
+if [[ ${PWD} != ${HOME} ]]; then
+  echo "Must be run from ${HOME}"
+  exit 0
+fi
+if ! hash git >/dev/null 2>&1; then
+  echo "Please install Git"
+  exit 0
+fi
 
 echo "Creating symlinks..."
-EXCLUDE="install.sh README.md solarized_dark.terminal"
-LS=`ls .dotfiles`
-for x in ${EXCLUDE}; do
-  LS=`echo ${LS} | grep -v ${x}`;
-done
-for f in `${LS}`; do 
-  ln -s ${HOME}/.dotfiles/${f} ${HOME}/.${f} >/dev/null 2>&1;
+EXCLUDE="install.sh README.md solarized_dark.terminal tmux.conf.default \
+         tmuxpowerline osx_defaults.sh"
+LS=$(ls .dotfiles)
+for f in ${LS}; do
+  echo "${EXCLUDE}" | grep -q ${f} || \
+      ln -s ${HOME}/.dotfiles/${f} ${HOME}/.${f} >/dev/null 2>&1
 done
 
 echo "Installing latest vundle bundle"
