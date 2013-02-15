@@ -13,10 +13,8 @@ set -g default-path "~"
 # Rename the window title to be the current 'application'
 set -g automatic-rename on
 
-#
 # Create and configure shells session
-#
-new -s shells
+new-session shells
 attach -t shells
 set status on
 
@@ -43,32 +41,28 @@ set -g base-index 1
 setw -g aggressive-resize on
 
 # Statusbar
-#set -g status on
-#set -g status-left ""
-#set -g status-right "#(hostname -s)"
-#set -g status-justify left
-#set -g window-status-format "#I #W "
-#set -g window-status-current-format "#I #W "
 set-option -g status on
 set-option -g status-interval 2
 set-option -g status-utf8 on
-set-option -g status-justify "centre"
-set-option -g status-left-length 60
+set-option -g status-justify "left"
 set-option -g status-right-length 90
-set-option -g status-left "#(~/.dotfiles/tmux-powerline/powerline.sh left)"
-set-option -g status-right "#(~/.dotfiles/tmux-powerline/powerline.sh right)"
+set-option -g status-right "#[fg=colour136]%a %Y-%m-%d  #[fg=colour166]%I:%M%P"
+set-window-option -g window-status-format " #I #W "
+set-window-option -g window-status-current-format " #I #W "
 
-# Colors (Solarized)
-set-option -g status-bg colour235 #base02
-set-option -g status-fg colour136 #yellow
+# Colors
+# To see a list of colours:
+#   for i in {0..255} ; do     printf "\x1b[38;5;${i}mcolour${i}\n"; done | more
+set-option -g status-bg colour235
+set-option -g status-fg colour136
 set-option -g status-attr default
-set-window-option -g window-status-fg colour244 #base0
+set-window-option -g window-status-fg colour250
 set-window-option -g window-status-bg default
-set-window-option -g window-status-current-fg colour166 #orange
-set-window-option -g window-status-current-bg default
-set-option -g pane-border-fg colour235 #base02
-set-option -g pane-active-border-fg colour240 #base01
-set-option -g message-bg colour235 #base02
-set-option -g message-fg colour166 #orange
-set-option -g display-panes-active-colour colour33 #blue
-set-option -g display-panes-colour colour166 #orange
+set-window-option -g window-status-current-fg white
+set-window-option -g window-status-current-bg colour88
+set-option -g pane-border-fg colour235
+set-option -g pane-active-border-fg colour240
+set-option -g message-bg colour235
+set-option -g message-fg colour166
+set-option -g display-panes-active-colour colour33
+set-option -g display-panes-colour colour166

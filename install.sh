@@ -9,7 +9,7 @@ fi
 
 echo "Creating symlinks..."
 EXCLUDE="install.sh README.md solarized_dark.terminal tmux.conf.default \
-         tmuxpowerline osx_defaults.sh"
+         osx_defaults.sh"
 LS=$(ls .dotfiles)
 for f in ${LS}; do
   echo "${EXCLUDE}" | grep -q ${f} || \
