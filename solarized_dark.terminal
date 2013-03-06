@@ -296,9 +296,9 @@
 		<key>F72B</key>
 		<string>scrollToEndOfDocument:</string>
 		<key>F72C</key>
-		<string>scrollPageUp:</string>
+		<string>[5~</string>
 		<key>F72D</key>
-		<string>scrollPageDown:</string>
+		<string>[6~</string>
 		<key>^F702</key>
 		<string>[5D</string>
 		<key>^F703</key>
