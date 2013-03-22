@@ -22,6 +22,9 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
+" Map ' to toggle TagBar
+noremap ' :TagbarToggle<CR>
+
 " Leader P to toggle paste mode
 set pastetoggle=<Leader>p
 
