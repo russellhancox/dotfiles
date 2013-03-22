@@ -52,6 +52,9 @@
   set wildmenu
   set wildmode=list:longest,full
 
+" Resize Vim windows when available size changes
+  autocmd VimResized * wincmd =
+
 " Process other configs
   runtime! config/*.vim
 
