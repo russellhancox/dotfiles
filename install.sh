@@ -28,4 +28,14 @@ if uname | grep -q Darwin; then
   ${HOME}/.dotfiles/osx_defaults.sh
 fi
 
+echo "*****"
 echo "Complete"
+echo ""
+echo "For the Vim plugin Syntastic to work, plugins need to be installed for each"
+echo "expected language, e.g. pylint for Python."
+echo ""
+echo "For the Vim plugin TagBar to work, exuberant ctags needs to be installed."
+echo "Ubuntu/Debian: sudo apt-get install exuberant-ctags"
+echo "Mac OS X (homebrew): brew install ctags; sudo rm /usr/bin/ctags"
+echo "Mac OS X (native): download, ./configure --prefix=/usr/bin && make && sudo make install"
+echo "*****"
