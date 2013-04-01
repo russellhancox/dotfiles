@@ -22,6 +22,13 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
+" Map ' to toggle TagBar
+noremap ' :TagbarToggle<CR>
+
+" Remap <F1> to Escape. I didn't want to see help anyway.
+map <F1> <Esc>
+imap <F1> <Esc>
+
 " Leader P to toggle paste mode
 set pastetoggle=<Leader>p
 
