@@ -15,6 +15,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'msanders/snipmate.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-characterize'
 Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
