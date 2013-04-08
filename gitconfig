@@ -4,10 +4,11 @@ name = Russell Hancox
 
 [alias]
 vimdiff = "difftool -y -t vimdiff -R"
+cm = "commit"
 st = "status -sb"
+lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 purr = "pull --rebase"
 ready = "rebase -i @{u}"
-lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 graph = "log --graph --decorate"
 ignored = "ls-files --others -i --exclude-standard"
 
