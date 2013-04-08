@@ -8,7 +8,6 @@ st = "status -sb"
 purr = "pull --rebase"
 ready = "rebase -i @{u}"
 lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
-standup = "!git log --since 7days --author $(git config user.email) --pretty=short"
 graph = "log --graph --decorate"
 ignored = "ls-files --others -i --exclude-standard"
 
