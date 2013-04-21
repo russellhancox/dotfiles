@@ -1,3 +1,19 @@
 .DS_Store
 .git
 .svn
+
+# Xcode stuff
+build
+project.xcworkspace/
+xcuserdata/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+
+# Built Python files
+*.pyc
+
+# Resource forks
+._*
