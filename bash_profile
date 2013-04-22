@@ -19,6 +19,7 @@ alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 # Configure shell options
 export GREP_OPTIONS="--color=auto"
+export LESSHISTFILE="-"
 shopt -s cdspell
 unset HISTFILESIZE
 HISTSIZE=1000000
