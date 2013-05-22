@@ -34,13 +34,13 @@ bind '"\C-w": backward-kill-word'
 
 case `uname` in
   "Darwin")
-      alias ls="ls -Gh"
-      alias catplist="plutil -convert xml1 -o -"
-      export HOSTNAME=$(scutil --get ComputerName)
+      alias ls="ls -OGh"                                    # Show file flags, colorized output and human file sizes
+      alias catplist="plutil -convert xml1 -o -"            # cat a plist even if it's binary
+      export HOSTNAME=$(scutil --get ComputerName)          # The normal hostname is often useless
       ;;
   "Linux")
-      alias ls="ls --color -h"
-      alias ps="ps f"
+      alias ls="ls --color -h"                              # Show colorized output and human file sizes
+      alias ps="ps f"                                       # Show processes as an ASCII tree
       export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
       [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
       ;;
