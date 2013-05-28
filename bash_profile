@@ -36,6 +36,8 @@ case `uname` in
   "Darwin")
       alias ls="ls -OGh"                                    # Show file flags, colorized output and human file sizes
       alias catplist="plutil -convert xml1 -o -"            # cat a plist even if it's binary
+      alias rootterm="sudo launchctl submit -l rahterm /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
+      alias roottermdel="sudo launchctl remove rahterm"
       export HOSTNAME=$(scutil --get ComputerName)          # The normal hostname is often useless
       ;;
   "Linux")
