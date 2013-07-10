@@ -17,6 +17,11 @@ alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
+# A better less, where available
+if which pygmentize >/dev/null; then
+  function less { pygmentize "$@" | /usr/bin/less -r; }
+fi
+
 # Configure shell options
 export GREP_OPTIONS="--color=auto"
 export LESSHISTFILE="-"
