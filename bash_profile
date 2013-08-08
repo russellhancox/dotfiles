@@ -12,6 +12,7 @@ hash vim >/dev/null 2>&1 && export EDITOR='vim'
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -al"
+alias less="less -R"
 alias psgrep="ps wwwaux | head -n1 && ps wwwaux | grep -v egrep | egrep -i"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
@@ -19,9 +20,7 @@ alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 # Make less better
 if which pygmentize >/dev/null; then
-  function less { pygmentize "$@" | /usr/bin/less -R; }
-else
-  alias less="less -R"
+  function lessh { pygmentize -g "$@" | /usr/bin/less -R; }
 fi
 
 # Configure shell options
