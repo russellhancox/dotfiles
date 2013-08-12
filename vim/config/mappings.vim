@@ -16,12 +16,6 @@ nmap <silent> <Leader>cd :cd %:p:h <CR>
 " Map <Leader>... to …
 imap <silent> <Leader>... …
 
-" Wean off the arrow keys, young padawan.
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-
 " Map ' to toggle TagBar
 noremap ' :TagbarToggle<CR>
 
