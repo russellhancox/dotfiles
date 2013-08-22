@@ -32,9 +32,6 @@ imap <F1> <Esc>
 " Leader P to toggle paste mode
 set pastetoggle=<Leader>p
 
-" Map w!! to sudo save
-cmap w!! w !sudo tee % >/dev/null
-
 " Mappings for Mac pbcopy
 if has("unix")
   let s:uname = system("uname")
@@ -43,3 +40,23 @@ if has("unix")
     vmap <C-c> :w !pbcopy<CR><CR>
   endif
 endif
+
+" Mappings to move and remove color column. The default is 80
+command! C100 :set colorcolumn=100
+command! C80 :set colorcolumn=80
+command! C0 :set colorcolumn=0
+
+" Map w!! to sudo save
+command! SudoWrite set noro | w !sudo tee % >/dev/null
+cmap w!! SudoWrite<CR>
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+      \ | wincmd p | diffthis
+endif
+
+" Clear the current search string (to remove highlighting..)
+nmap <silent> <Leader>c :nohlsearch<CR>

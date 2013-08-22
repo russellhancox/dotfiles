@@ -52,6 +52,10 @@
   set wildmenu
   set wildmode=list:longest,full
 
+" Set PowerLine options
+  silent! let g:Powerline_symbols = 'compatible'
+  silent! let g:Powerline_stl_path_style = 'short'
+
 " Resize Vim windows when available size changes
   autocmd VimResized * wincmd =
 
