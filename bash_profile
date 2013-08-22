@@ -12,10 +12,16 @@ hash vim >/dev/null 2>&1 && export EDITOR='vim'
 alias l="ls"
 alias ll="ls -l"
 alias la="ls -al"
+alias less="less -R"
 alias psgrep="ps wwwaux | head -n1 && ps wwwaux | grep -v egrep | egrep -i"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+
+# Make less better
+if which pygmentize >/dev/null; then
+  function lessh { pygmentize -g "$@" | /usr/bin/less -R; }
+fi
 
 # Configure shell options
 export GREP_OPTIONS="--color=auto"
@@ -34,13 +40,15 @@ bind '"\C-w": backward-kill-word'
 
 case `uname` in
   "Darwin")
-      alias ls="ls -Gh"
-      alias catplist="plutil -convert xml1 -o -"
-      export HOSTNAME=$(scutil --get ComputerName)
+      alias ls="ls -OGh"                                    # Show file flags, colorized output and human file sizes
+      alias catplist="plutil -convert xml1 -o -"            # cat a plist even if it's binary
+      alias rootterm="sudo launchctl submit -l rahterm /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
+      alias roottermdel="sudo launchctl remove rahterm"
+      export HOSTNAME=$(scutil --get ComputerName)          # The normal hostname is often useless
       ;;
   "Linux")
-      alias ls="ls --color -h"
-      alias ps="ps f"
+      alias ls="ls --color -h"                              # Show colorized output and human file sizes
+      alias ps="ps f"                                       # Show processes as an ASCII tree
       export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
       [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
       ;;
