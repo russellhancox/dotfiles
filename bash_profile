@@ -40,17 +40,20 @@ bind '"\C-w": backward-kill-word'
 
 case `uname` in
   "Darwin")
-      alias ls="ls -OGh"                                    # Show file flags, colorized output and human file sizes
-      alias catplist="plutil -convert xml1 -o -"            # cat a plist even if it's binary
+      alias ls="ls -OGh"                                     # Show file flags, colorized output and human file sizes
+      alias catplist="plutil -convert xml1 -o -"             # cat a plist even if it's binary
       alias rootterm="sudo launchctl submit -l rahterm /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
       alias roottermdel="sudo launchctl remove rahterm"
-      export HOSTNAME=$(scutil --get ComputerName)          # The normal hostname is often useless
+      unset PROMPT_COMMAND
+      export HOSTNAME=$(scutil --get ComputerName)           # The normal hostname is often useless
+      function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; } # Set Terminal.app title
       ;;
   "Linux")
-      alias ls="ls --color -h"                              # Show colorized output and human file sizes
-      alias ps="ps f"                                       # Show processes as an ASCII tree
+      alias ls="ls --color -h"                               # Show colorized output and human file sizes
+      alias ps="ps f"                                        # Show processes as an ASCII tree
       export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
       [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
+      function settitle() { echo -ne "\033]0;$@\007"; }      # Set Xterm title
       ;;
 esac
 
@@ -69,19 +72,13 @@ function git_prompt
 }
 function ps1
 {
-  local BOLD="\[$(tput bold)\]"
   local RED="\[$(tput setaf 1)\]"
   local GREEN="\[$(tput setaf 2)\]"
   local YELLOW="\[$(tput setaf 3)\]"
   local BLUE="\[$(tput setaf 4)\]"
-  local MAGENTA="\[$(tput setaf 5)\]"
-  local CYAN="\[$(tput setaf 6)\]"
-  local DEFAULT='\[$(tput sgr0)\]'
+  local DEFAULT="\[$(tput sgr0)\]"
 
-  PS1="${YELLOW}\u@${HOSTNAME} "
-  PS1="${PS1}${RED}\W "
-  PS1="${PS1}${GREEN}\$(git_prompt)"
-  PS1="${PS1}${BLUE}$ ${DEFAULT}"
+  PS1="${YELLOW}\u@${HOSTNAME} ${RED}\W ${GREEN}\$(git_prompt)${BLUE}$ ${DEFAULT}"
   export PS1
 }
 ps1
