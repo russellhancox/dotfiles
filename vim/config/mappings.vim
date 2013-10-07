@@ -8,16 +8,16 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Map ,e to edit a file in the current working directory
-nmap <silent> <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nmap <silent> <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Map ,cd to change cwd to the directory of the file currently being edited
-nmap <silent> <Leader>cd :cd %:p:h <CR>
+nmap <silent> <leader>cd :cd %:p:h <CR>
 
 " Map <Leader>... to …
-imap <silent> <Leader>... …
+imap <silent> <leader>... …
 
 " Map ' to toggle TagBar
-noremap ' :TagbarToggle<CR>
+noremap <leader>' :TagbarToggle<CR>
 
 " Remap <F1> to Escape. I didn't want to see help anyway.
 map <F1> <Esc>
@@ -53,4 +53,12 @@ if !exists(":DiffOrig")
 endif
 
 " Clear the current search string (to remove highlighting..)
-nmap <silent> <Leader>c :nohlsearch<CR>
+nnoremap <silent> <leader><space> :noh<CR>
+
+" Use sensible regex
+nnoremap / /\v
+vnoremap / /\v
+
+" Use <Tab> to move between bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
