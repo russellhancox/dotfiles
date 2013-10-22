@@ -44,6 +44,7 @@ case `uname` in
       alias catplist="plutil -convert xml1 -o -"             # cat a plist even if it's binary
       alias rootterm="sudo launchctl submit -l rahterm /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
       alias roottermdel="sudo launchctl remove rahterm"
+      alias cleartmp="sudo find . -name 'tmp*' -o -name 'munki-*' -delete"
       unset PROMPT_COMMAND
       export HOSTNAME=$(scutil --get ComputerName)           # The normal hostname is often useless
       function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; } # Set Terminal.app title
