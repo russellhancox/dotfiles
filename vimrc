@@ -15,6 +15,7 @@
   set nobackup                      " Don't leave backup files everywhere
   silent! set colorcolumn=80        " Leave a line down the screen at 80c
   set copyindent                    " Copy previous indentation when indenting
+  set cursorline                    " Show a line where the cursor is
   set encoding=utf-8                " Default encoding
   set expandtab                     " Expand tabs to spaces
   set hidden                        " Allow moving to a different buffer
@@ -24,6 +25,7 @@
   set ignorecase                    " Ignore case when searching
   set incsearch                     " Search as soon as matches are found
   set laststatus=2                  " Show status line on penultimate line
+  set modelines=0                   " Disable modelines
   set mouse=a                       " Enable mouse support
   set number                        " Show line number gutter
   set scrolloff=5                   " Keep cursor 5 lines from top/bottom
@@ -31,9 +33,12 @@
   set shortmess-=l                  " ^^^
   set showcmd                       " Display incomplete commands
   set noshowmode                    " Don't show mode on last line
+  set smartcase                     " If search includes an uppercase character,
+                                    " do a case-sensitive search
   set smarttab                      " Inserting tabs at start of line
+  set ttyfast                       " Make text scrolling smoother
   set undolevels=1000               " Lots of undo
-  set nowrap                        " Don't wrap long lines
+  set nowrap                        " Don't wrap long lines.
 
 " Set tab width
   let g:tabwidth=2
