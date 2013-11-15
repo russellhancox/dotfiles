@@ -53,7 +53,7 @@ if !exists(":DiffOrig")
 endif
 
 " Clear the current search string (to remove highlighting..)
-nnoremap <silent> <leader><space> :noh<CR>
+nnoremap <silent> <C-L> :noh<CR>
 
 " Use sensible regex
 nnoremap / /\v
