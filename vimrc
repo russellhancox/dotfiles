@@ -7,7 +7,7 @@
 
   set t_Co=256
   set background=dark
-  silent! colorscheme mustang
+  silent! colorscheme tomorrow-night
 
   set autoindent                    " Auto indent new lines, brackets etc.
   set autoread                      " Reload files changed outside of VIM.

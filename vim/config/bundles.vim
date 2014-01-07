@@ -21,5 +21,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-characterize'
 Bundle 'tpope/vim-fugitive'
+Bundle 'wjakob/vim-tomorrow-night'
 
 filetype plugin indent on

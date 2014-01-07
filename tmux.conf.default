@@ -1,3 +1,6 @@
+# Create and configure shells session
+new-session -s shells
+
 # Set C-o as command prefix
 set -g prefix C-o
 
@@ -13,11 +16,6 @@ set -g default-path "~"
 # Rename the window title to be the current 'application'
 set -g automatic-rename on
 
-# Create and configure shells session
-new-session shells
-attach -t shells
-set status on
-
 # Vim-style copy
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
@@ -25,31 +23,9 @@ bind-key -t vi-copy 'y' copy-selection
 # This prevents Ctrl-clicking URLs :(
 set mouse-select-pane off
 
-# Sensible split keys
-unbind %
-bind | split-window -h
-bind - split-window -v
-
-# Open new window with F5
-bind -n F5 new-window
-
-# Start window numbering at 1
-set -g base-index 1
-
 # Only constrain a window size if another client is actually looking at the
 # same window
 setw -g aggressive-resize on
-
-# Statusbar
-set-option -g status on
-set-option -g status-interval 2
-set-option -g status-utf8 on
-set-option -g status-justify "left"
-set-option -g status-right-length 90
-set-option -g status-left ""
-set-option -g status-right "#[fg=colour136]%a %Y-%m-%d  #[fg=colour166]%I:%M%P"
-set-window-option -g window-status-format " #I #W "
-set-window-option -g window-status-current-format " #I #W "
 
 # Colors
 # To see a list of colours:
@@ -70,3 +46,27 @@ set-option -g message-bg colour235
 set-option -g message-fg colour166
 set-option -g display-panes-active-colour colour33
 set-option -g display-panes-colour colour166
+
+# Sensible split keys
+unbind %
+bind | split-window -h
+bind - split-window -v
+
+# Open new window with F5
+bind -n F5 new-window
+
+# Rename current window with R
+bind-key R command-prompt -p "Name for this window: " "rename-window '%%'"
+
+# Statusbar
+set status on
+set-option -g status on
+set-option -g status-interval 2
+set-option -g status-utf8 on
+#set-option -g status-justify "left"
+set-option -g status-left ""
+set-option -g status-right " #h"
+set-option -g status-right-length 50
+set-window-option -g window-status-format " #I #W "
+set-window-option -g window-status-current-format " #I #W "
+
