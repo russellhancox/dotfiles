@@ -5,9 +5,11 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'croaker/mustang-vim.git'
 Bundle 'duff/vim-scratch'
+Bundle 'ervandew/supertab'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'kien/ctrlp.vim'
@@ -21,6 +23,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-characterize'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-sensible'
 Bundle 'wjakob/vim-tomorrow-night'
 
 filetype plugin indent on
