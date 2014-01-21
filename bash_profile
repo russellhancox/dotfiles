@@ -47,20 +47,17 @@ case `uname` in
       alias cleartmp="sudo find . -name 'tmp*' -o -name 'munki-*' -delete"
       unset PROMPT_COMMAND
       export HOSTNAME=$(scutil --get ComputerName)           # The normal hostname is often useless
-      function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; } # Set Terminal.app title
       ;;
   "Linux")
       alias ls="ls --color -h"                               # Show colorized output and human file sizes
       alias ps="ps f"                                        # Show processes as an ASCII tree
       export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
       [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
-      function settitle() { echo -ne "\033]0;$@\007"; }      # Set Xterm title
       ;;
 esac
 
 # Set shell line
-function git_prompt
-{
+function git_prompt {
   GIT_STATUS=$(git status --porcelain 2>&1)
   if [ $? -eq 0 ]; then
     GIT_BRANCH=$(git branch | grep '*' | awk '{print $2}')
@@ -71,8 +68,7 @@ function git_prompt
     fi
   fi
 }
-function ps1
-{
+function ps1 {
   local RED="\[$(tput setaf 1)\]"
   local GREEN="\[$(tput setaf 2)\]"
   local YELLOW="\[$(tput setaf 3)\]"
@@ -83,6 +79,11 @@ function ps1
   export PS1
 }
 ps1
+
+# Set Terminal title
+function settitle() {
+  echo -ne "\033]0;$@\007";
+}
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.bash_profile.local" ]] && source ${HOME}/.bash_profile.local
