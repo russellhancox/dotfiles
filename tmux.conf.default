@@ -29,14 +29,11 @@ setw -g aggressive-resize on
 
 # Colors
 # To see a list of colours:
-#   for i in {0..255} ; do     printf "\x1b[38;5;${i}mcolour${i}\n"; done | more
+#   for i in {0..255} ; do     printf "\x1b[38;5;${i}mcolour${i}\n"; done | less
 set-option -g status-bg colour235
 set-option -g status-fg colour136
 set-option -g status-attr default
 set-window-option -g window-status-bg default
-set-window-option -g window-status-fg colour250
-set-window-option -g window-status-current-bg colour88
-set-window-option -g window-status-current-fg white
 set-window-option -g window-status-bell-attr blink
 set-window-option -g window-status-bell-bg colour20
 set-window-option -g window-status-bell-fg white
@@ -63,10 +60,10 @@ set status on
 set-option -g status on
 set-option -g status-interval 2
 set-option -g status-utf8 on
-#set-option -g status-justify "left"
+set-option -g status-justify "left"
 set-option -g status-left ""
 set-option -g status-right " #h"
 set-option -g status-right-length 50
-set-window-option -g window-status-format " #I #W "
-set-window-option -g window-status-current-format " #I #W "
+set-window-option -g window-status-format "#[fg=colour4] #I  #W "
+set-window-option -g window-status-current-format "#[bg=white]#[fg=colour24] #I #[bg=colour24]#[fg=white] #W "
 
