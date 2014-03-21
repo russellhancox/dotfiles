@@ -28,9 +28,8 @@ export GREP_OPTIONS="--color=auto"
 export LESSHISTFILE="-"
 shopt -s cdspell
 unset HISTFILESIZE
+unset HISTFILE
 HISTSIZE=1000000
-HISTCONTROL=ignoreboth:erasedups
-HISTIGNORE='ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 stty -ixon
 
@@ -45,8 +44,8 @@ case `uname` in
       alias rootterm="sudo launchctl submit -l rahterm /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
       alias roottermdel="sudo launchctl remove rahterm"
       alias cleartmp="sudo find . -name 'tmp*' -o -name 'munki-*' -delete"
-      unset PROMPT_COMMAND
       export HOSTNAME=$(scutil --get ComputerName)           # The normal hostname is often useless
+      unset PROMPT_COMMAND
       ;;
   "Linux")
       alias ls="ls --color -h"                               # Show colorized output and human file sizes
@@ -57,32 +56,58 @@ case `uname` in
 esac
 
 # Set shell line
-function git_prompt {
+function prompt_lastcmd {
+  RETVAL=$?
+  [[ $RETVAL -ne 0 ]] && printf "\342\234\227 "
+}
+
+function prompt_jobs {
+  [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙ "
+}
+
+function prompt_git {
   GIT_STATUS=$(git status --porcelain 2>&1)
   if [ $? -eq 0 ]; then
     GIT_BRANCH=$(git branch | grep '*' | awk '{print $2}')
     if echo ${GIT_STATUS} | grep -q 'M'; then
-      echo "[${GIT_BRANCH} M] "
+      printf "[${GIT_BRANCH} M] "
     else
-      echo "[${GIT_BRANCH}] "
+      printf "[${GIT_BRANCH}] "
     fi
   fi
 }
-function ps1 {
-  local RED="\[$(tput setaf 1)\]"
-  local GREEN="\[$(tput setaf 2)\]"
-  local YELLOW="\[$(tput setaf 3)\]"
-  local BLUE="\[$(tput setaf 4)\]"
-  local DEFAULT="\[$(tput sgr0)\]"
 
-  PS1="${YELLOW}\u@${HOSTNAME} ${RED}\W ${GREEN}\$(git_prompt)${BLUE}$ ${DEFAULT}"
-  export PS1
+function ps1 {
+  DEFAULT='\[\[\e[0m\]'
+  BLACK='\[\e[0;30m\]'
+  RED='\[\e[0;31m\]'
+  GREEN='\[\e[0;32m\]'
+  YELLOW='\[\e[0;33m\]'
+  BLUE='\[\e[0;34m\]'
+  PURPLE='\[\e[0;35m\]'
+  CYAN='\[\e[0;36m\]'
+  WHITE='\[\e[0;37m\]'
+
+  export PS1="${YELLOW}\u@${HOSTNAME} ${PURPLE}\! ${BLUE}\w ${RED}\$(prompt_lastcmd)${BLUE}\$(prompt_jobs)${GREEN}\$(prompt_git)\n${BLUE}» ${DEFAULT}"
 }
 ps1
 
 # Set Terminal title
 function settitle() {
   echo -ne "\033]0;$@\007";
+}
+
+# Add color to manpages
+man() {
+  env \
+  LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+  LESS_TERMCAP_md=$(printf "\e[1;31m") \
+  LESS_TERMCAP_me=$(printf "\e[0m") \
+  LESS_TERMCAP_se=$(printf "\e[0m") \
+  LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+  LESS_TERMCAP_ue=$(printf "\e[0m") \
+  LESS_TERMCAP_us=$(printf "\e[1;32m") \
+  man "$@"
 }
 
 # If a local customization file exists, use it..

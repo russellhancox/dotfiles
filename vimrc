@@ -29,7 +29,6 @@
 
 " Set tab width
   let g:tabwidth=2
-
   exec 'set shiftwidth='  . g:tabwidth
   exec 'set softtabstop=' . g:tabwidth
   exec 'set tabstop='     . g:tabwidth
