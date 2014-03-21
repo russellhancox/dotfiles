@@ -2,9 +2,7 @@
   source ~/.vim/config/bundles.vim
 " NB: filetype plugin indent on is called at the end of that file
 
-  set t_Co=256
-  set background=dark
-  silent! colorscheme tomorrow-night
+  colorscheme luna-term
 
   set nobackup                      " Don't leave backup files everywhere
   silent! set colorcolumn=80        " Leave a line down the screen at 80c
@@ -45,10 +43,6 @@
   set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*DS_Store*
   set wildignore+=*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*/.tox/*,*.egg-info/*
   set wildmode=list:longest,full
-
-" Set PowerLine options
-  silent! let g:Powerline_symbols = 'compatible'
-  silent! let g:Powerline_stl_path_style = 'short'
 
 " Resize Vim windows when available size changes
   autocmd VimResized * wincmd =
