@@ -146,7 +146,7 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write com.apple.terminal StringEncodings -array 4
 
 # Install Source Code Pro (Powerline) Light font
-curl -LO /Library/Fonts/SourceCodePowerlineLight.otf \
+curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
   "https://github.com/Lokaltog/powerline-fonts/blob/master/SourceCodePro/Sauce%20Code%20Powerline%20Light.otf?raw=true"
 
 # Use the Solarized Dark theme by default in Terminal.app
