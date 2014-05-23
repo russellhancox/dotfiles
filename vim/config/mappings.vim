@@ -52,13 +52,6 @@ if !exists(":DiffOrig")
       \ | wincmd p | diffthis
 endif
 
-" Clear the current search string (to remove highlighting..)
-nnoremap <silent> <C-L> :noh<CR>
-
-" Use sensible regex
-nnoremap / /\v
-vnoremap / /\v
-
 " Use <Tab> to move between bracket pairs
 nnoremap <tab> %
 vnoremap <tab> %
