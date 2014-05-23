@@ -62,3 +62,6 @@ vnoremap / /\v
 " Use <Tab> to move between bracket pairs
 nnoremap <tab> %
 vnoremap <tab> %
+
+" Use vdd (void delete) to delete without copy
+nnoremap vd "_d

@@ -29,6 +29,7 @@ export LESSHISTFILE="-"
 shopt -s cdspell
 unset HISTFILESIZE
 unset HISTFILE
+HISTIGNORE="fg bg history"
 HISTSIZE=1000000
 HISTTIMEFORMAT='%F %T '
 stty -ixon
