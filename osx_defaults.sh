@@ -114,8 +114,13 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
+# Change default window location
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME"
+
+# Change what appears on desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool NO
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool NO
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool NO
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
