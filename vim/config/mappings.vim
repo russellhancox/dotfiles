@@ -1,11 +1,11 @@
 " Map ; to : to save typing
 nnoremap ; :
 
-" Map Control + {h, j, k, l} to move windows
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" Map Control + {left, down, up, right} to move windows
+map <C-Left> <C-w>h
+map <C-Down> <C-w>j
+map <C-Up> <C-w>k
+map <C-Right> <C-w>l
 
 " Map ,e to edit a file in the current working directory
 nmap <silent> <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
