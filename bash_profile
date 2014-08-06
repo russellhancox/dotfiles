@@ -44,7 +44,7 @@ case `uname` in
       alias catplist="plutil -convert xml1 -o -"             # cat a plist even if it's binary
       alias rootterm="sudo launchctl submit -l rahterm /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
       alias roottermdel="sudo launchctl remove rahterm"
-      alias xcopen="proj=$(find . -name '*xcworkspace' -maxdepth 1 -prune -print -quit); if [[ -n ${proj} ]]; then open ${proj}; else proj=$(find . -name '*.xcodeproj' -maxdepth 1 -print -prune -quit); if [[ -n ${proj} ]]; then open ${proj}; else echo 'no project found'; fi; fi"
+      alias xcopen="proj=\$(find . -name '*xcworkspace' -maxdepth 1 -prune -print -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else proj=\$(find . -name '*.xcodeproj' -maxdepth 1 -print -prune -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else echo 'no project found'; fi; fi"
       export HOSTNAME=$(scutil --get ComputerName)           # The normal hostname is often useless
       unset PROMPT_COMMAND
       ;;
