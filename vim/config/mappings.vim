@@ -19,6 +19,9 @@ imap <silent> <leader>... …
 " Map ' to toggle TagBar
 noremap <leader>' :TagbarToggle<CR>
 
+" Map <C-L> (redraw screen) to also turn off search highlighting until the next search
+nnoremap <C-L> :nohl<CR><C-L>
+
 " Remap <F1> to Escape. I didn't want to see help anyway.
 map <F1> <Esc>
 imap <F1> <Esc>
