@@ -2,7 +2,7 @@
 autocmd filetype go autocmd BufWritePre <buffer> Fmt
 
 " For certain filetypes highlighting tabs is annoying highlighting is annoying
-autocmd BufRead,BufNewFile *.make set filetype=make
-autocmd filetype html,xml,make,go set nolist
-autocmd filetype html,xml,make,go set noexpandtab
-
+autocmd BufRead,BufNewFile *.make setl filetype=make
+autocmd filetype html,xml,make,go setl nolist
+autocmd filetype html,xml,make,go setl noexpandtab
+autocmd FileType python setl sw=2 sts=2 et
