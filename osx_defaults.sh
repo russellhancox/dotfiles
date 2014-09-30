@@ -101,14 +101,14 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Show item info below icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
 
 # Enable snap-to-grid for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
@@ -127,6 +127,10 @@ defaults write com.apple.dock autohide -bool true
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
+
+# Create preferred dock entries
+/usr/libexec/PlistBuddy -c "Delete persistent-apps" ~/Library/Preferences/com.apple.dock.plist
+PlistBuddy -c "Merge ~/.dotfiles/default-dock.plist" ~/Library/Preferences/com.apple.dock.plist
 
 ###############################################################################
 # Safari                                                                      #
@@ -158,11 +162,11 @@ curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
 open "$HOME/.dotfiles/solarized_dark.terminal"
 
 sleep 1 # Wait a bit to make sure the theme is loaded
-defaults write com.apple.terminal "Default Window Settings" -string "Solarized Dark"
-defaults write com.apple.terminal "Startup Window Settings" -string "Solaried Dark"
+defaults write com.apple.terminal "Default Window Settings" -string "solarized_dark"
+defaults write com.apple.terminal "Startup Window Settings" -string "solarized_dark"
 
 # Install bpython
-easy_install bpython >/dev/null 2>&1
+easy_install bpython >/dev/null
 
 ###############################################################################
 # Misc
@@ -184,7 +188,7 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
-for app in "Dock" "Finder" "Safari" "SystemUIServer"; do
+for app in "Dock" "Finder" "Safari" "SystemUIServer" "cfprefsd"; do
   echo "Killing $app, do not be alarmed"
   sudo killall "$app" > /dev/null 2>&1
 done
