@@ -129,8 +129,8 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock showhidden -bool true
 
 # Create preferred dock entries
-/usr/libexec/PlistBuddy -c "Delete persistent-apps" ~/Library/Preferences/com.apple.dock.plist
-PlistBuddy -c "Merge ~/.dotfiles/default-dock.plist" ~/Library/Preferences/com.apple.dock.plist
+/usr/libexec/PlistBuddy -c "Delete persistent-apps" ~/Library/Preferences/com.apple.dock.plist 2>/dev/null
+/usr/libexec/PlistBuddy -c "Merge /Users/${USER}/.dotfiles/default-dock.plist" ~/Library/Preferences/com.apple.dock.plist 2>/dev/null
 
 ###############################################################################
 # Safari                                                                      #
@@ -161,12 +161,12 @@ curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
 # Use the Solarized Dark theme by default in Terminal.app
 open "$HOME/.dotfiles/solarized_dark.terminal"
 
-sleep 1 # Wait a bit to make sure the theme is loaded
+sleep 2 # Wait a bit to make sure the theme is loaded
 defaults write com.apple.terminal "Default Window Settings" -string "solarized_dark"
 defaults write com.apple.terminal "Startup Window Settings" -string "solarized_dark"
 
 # Install bpython
-easy_install bpython >/dev/null
+sudo easy_install bpython >/dev/null
 
 ###############################################################################
 # Misc
@@ -184,6 +184,12 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
+
+# Set my account picture
+sudo cp ~/.dotfiles/Avatar.jpg "/Library/User Pictures/rahatar.jpg"
+sudo dscl . delete /Users/${USER} jpegphoto
+sudo dscl . delete /Users/${USER} Picture
+sudo dscl . create /Users/${USER} Picture "/Library/User Pictures/rahatar.jpg"
 
 ###############################################################################
 # Kill affected applications                                                  #
