@@ -17,6 +17,7 @@ alias psgrep="ps wwwaux | head -n1 && ps wwwaux | grep -v egrep | egrep -i"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+alias cd..="echo 'cd SPACE .., idiot.'; cd .."
 
 # Make less better
 if which pygmentize >/dev/null; then
@@ -61,10 +62,12 @@ function prompt_lastcmd {
   RETVAL=$?
   [[ $RETVAL -ne 0 ]] && printf "\342\234\227 "
 }
+export -f prompt_lastcmd
 
 function prompt_jobs {
   [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙ "
 }
+export -f prompt_jobs
 
 function prompt_git {
   GIT_STATUS=$(git status --porcelain 2>&1)
@@ -77,6 +80,7 @@ function prompt_git {
     fi
   fi
 }
+export -f prompt_git
 
 function ps1 {
   DEFAULT='\[\[\e[0m\]'
@@ -97,9 +101,10 @@ ps1
 function settitle() {
   echo -ne "\033]0;$@\007";
 }
+export -f settitle
 
 # Add color to manpages
-man() {
+function man() {
   env \
   LESS_TERMCAP_mb=$(printf "\e[1;31m") \
   LESS_TERMCAP_md=$(printf "\e[1;31m") \
@@ -110,6 +115,7 @@ man() {
   LESS_TERMCAP_us=$(printf "\e[1;32m") \
   man "$@"
 }
+export -f man
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.bash_profile.local" ]] && source ${HOME}/.bash_profile.local
