@@ -28,8 +28,6 @@ fi
 export GREP_OPTIONS="--color=auto"
 export LESSHISTFILE="-"
 shopt -s cdspell
-unset HISTFILESIZE
-unset HISTFILE
 HISTIGNORE="fg bg history"
 HISTSIZE=1000000
 HISTTIMEFORMAT='%F %T '
@@ -62,12 +60,10 @@ function prompt_lastcmd {
   RETVAL=$?
   [[ $RETVAL -ne 0 ]] && printf "\342\234\227 "
 }
-export -f prompt_lastcmd
 
 function prompt_jobs {
   [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙ "
 }
-export -f prompt_jobs
 
 function prompt_git {
   GIT_STATUS=$(git status --porcelain 2>&1)
@@ -80,7 +76,6 @@ function prompt_git {
     fi
   fi
 }
-export -f prompt_git
 
 function ps1 {
   DEFAULT='\[\[\e[0m\]'
@@ -93,7 +88,9 @@ function ps1 {
   CYAN='\[\e[0;36m\]'
   WHITE='\[\e[0;37m\]'
 
-  export PS1="${YELLOW}\u@${HOSTNAME} ${BLUE}\w ${RED}\$(prompt_lastcmd)${BLUE}\$(prompt_jobs)${GREEN}\$(prompt_git)\n${BLUE}» ${DEFAULT}"
+  export PS1="${YELLOW}\u@${HOSTNAME} ${BLUE}\w ${RED}"\
+"\$(prompt_lastcmd 2>/dev/null)${BLUE}\$(prompt_jobs 2>/dev/null)"\
+"${GREEN}\$(prompt_git 2>/dev/null)\n${BLUE}» ${DEFAULT}"
 }
 ps1
 
@@ -101,7 +98,6 @@ ps1
 function settitle() {
   echo -ne "\033]0;$@\007";
 }
-export -f settitle
 
 # Add color to manpages
 function man() {
@@ -115,7 +111,6 @@ function man() {
   LESS_TERMCAP_us=$(printf "\e[1;32m") \
   man "$@"
 }
-export -f man
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.bash_profile.local" ]] && source ${HOME}/.bash_profile.local
