@@ -17,6 +17,7 @@ alias psgrep="ps wwwaux | head -n1 && ps wwwaux | grep -v egrep | egrep -i"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+alias cd..="echo 'cd SPACE .., idiot.'; cd .."
 
 # Make less better
 if which pygmentize >/dev/null; then
@@ -27,8 +28,6 @@ fi
 export GREP_OPTIONS="--color=auto"
 export LESSHISTFILE="-"
 shopt -s cdspell
-unset HISTFILESIZE
-unset HISTFILE
 HISTIGNORE="fg bg history"
 HISTSIZE=1000000
 HISTTIMEFORMAT='%F %T '
@@ -89,7 +88,9 @@ function ps1 {
   CYAN='\[\e[0;36m\]'
   WHITE='\[\e[0;37m\]'
 
-  export PS1="${YELLOW}\u@${HOSTNAME} ${BLUE}\w ${RED}\$(prompt_lastcmd)${BLUE}\$(prompt_jobs)${GREEN}\$(prompt_git)\n${BLUE}» ${DEFAULT}"
+  export PS1="${YELLOW}\u@${HOSTNAME} ${BLUE}\w ${RED}"\
+"\$(prompt_lastcmd 2>/dev/null)${BLUE}\$(prompt_jobs 2>/dev/null)"\
+"${GREEN}\$(prompt_git 2>/dev/null)\n${BLUE}» ${DEFAULT}"
 }
 ps1
 
@@ -99,7 +100,7 @@ function settitle() {
 }
 
 # Add color to manpages
-man() {
+function man() {
   env \
   LESS_TERMCAP_mb=$(printf "\e[1;31m") \
   LESS_TERMCAP_md=$(printf "\e[1;31m") \
