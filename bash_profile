@@ -18,6 +18,7 @@ alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 alias cd..="echo 'cd SPACE .., idiot.'; cd .."
+alias tailf="tail -F"
 
 # Make less better
 if which pygmentize >/dev/null; then
