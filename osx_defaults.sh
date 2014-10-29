@@ -186,6 +186,9 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
+# Enable Xcode build timing
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
+
 # Set my account picture
 sudo cp ~/.dotfiles/Avatar.jpg "/Library/User Pictures/rahatar.jpg"
 sudo dscl . delete /Users/${USER} jpegphoto
