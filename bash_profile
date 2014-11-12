@@ -26,12 +26,13 @@ if which pygmentize >/dev/null; then
 fi
 
 # Configure shell options
+export PROMPT_DIRTRIM=5
 export GREP_OPTIONS="--color=auto"
 export LESSHISTFILE="-"
 shopt -s cdspell
-HISTIGNORE="fg bg history"
-HISTSIZE=1000000
-HISTTIMEFORMAT='%F %T '
+export HISTIGNORE="fg bg history"
+export HISTSIZE=1000000
+export HISTTIMEFORMAT='%F %T '
 stty -ixon
 
 # Configure Ctrl+W to backwards-kill-word so I can Ctrl+W with file paths
