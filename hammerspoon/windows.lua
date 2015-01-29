@@ -6,7 +6,7 @@ grid.GRIDWIDTH = 100
 grid.MARGINX = 0
 grid.MARGINY = 0
 
-windowHotkey = hs.hotkey.modal.new(mash, "space")
+windowHotkey = hs.hotkey.modal.new(mash, 'space')
 function windowHotkey:entered()
   menubar = hs.menubar.new()
   menubar:setTitle('W-Mode')
@@ -16,6 +16,7 @@ function windowHotkey:exited()
 end
 
 windowHotkey:bind({}, 'escape', function() windowHotkey:exit() end)
+windowHotkey:bind(mash, 'space', function() windowHotkey:exit() end)
 windowHotkey:bind({}, 'f', function() hs.window.focusedWindow():maximize() end)
 windowHotkey:bind({}, 'n', function()
   local win = hs.window.focusedWindow()
@@ -32,3 +33,12 @@ windowHotkey:bind({}, 'r', function()
   hs.grid.set(win, {x=50, y=0, w=50, h=100}, win:screen())
 end)
 
+windowHotkey:bind({}, '6', function()
+  local win = hs.window.focusedWindow()
+  hs.grid.set(win, {x=0, y=0, w=60, h=100}, win:screen())
+end)
+
+windowHotkey:bind({}, '4', function()
+  local win = hs.window.focusedWindow()
+  hs.grid.set(win, {x=60, y=0, w=40, h=100}, win:screen())
+end)
