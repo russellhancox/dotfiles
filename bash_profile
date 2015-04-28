@@ -60,7 +60,7 @@ esac
 # Set shell line
 function prompt_lastcmd {
   RETVAL=$?
-  [[ $RETVAL -ne 0 ]] && printf "\342\234\227 "
+  [[ $RETVAL -ne 0 ]] && printf "($RETVAL) "
 }
 
 function prompt_jobs {
