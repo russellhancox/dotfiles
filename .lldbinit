@@ -1,0 +1,18 @@
+settings set prompt "[lldb] $ "
+
+command alias bd breakpoint disable
+command alias be breakpoint enable
+command alias bdel breakpoint delete
+
+command alias jump register write pc
+command alias jmp register write pc
+command alias j register write pc
+
+command alias p/s register read
+
+command alias return thread return
+
+command alias tc target create
+command alias tl target list
+
+command alias il image lookup -a %1
