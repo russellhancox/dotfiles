@@ -52,6 +52,10 @@ bind - split-window -v
 # Open new window with F5
 bind -n F5 new-window
 
+# Move a window in the list with Prefix-Left and Prefix-Right
+bind-key left swap-window -t -1
+bind-key right swap-window -t +1
+
 # Rename current window with R
 bind-key R command-prompt -p "Name for this window: " "rename-window '%%'"
 

@@ -1,5 +1,6 @@
 vim/bundle/*
 vim/sessions
 vim/vim
+vim/.netrwhist
 vim/backups/
 .DS_Store
