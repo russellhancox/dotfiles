@@ -1,12 +1,13 @@
-local mash = {"cmd", "alt", "ctrl"}
+mash = {"cmd", "alt", "ctrl"}
 
 require 'reload'
+
+require 'caffeine'
+require 'mouse'
+require 'wifi'
 require 'windows'
 
-hs.hotkey.bind(mash, "H", function()
-  hs.hints.windowHints()
-end)
-
-hs.hotkey.bind(mash, "L", function()
-  hs.application.launchOrFocus("ScreenSaverEngine.app")
-end)
+hs.hotkey.bind(mash, 'y', hs.toggleConsole)
+hs.hotkey.bind(mash, "h", hs.hints.windowHints)
+hs.hotkey.bind(mash, 'n', function() os.execute("open ~") end)
+hs.hotkey.bind(mash, "l", function() hs.application.launchOrFocus("ScreenSaverEngine.app") end)
