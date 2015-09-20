@@ -9,8 +9,14 @@ function setCaffeineDisplay(state)
     end
 end
 
-function caffeineClicked()
+function caffeineClicked(button)
+  if button['shift'] then
+    hs.openConsole(true)
+  elseif button['cmd'] then
+    hs.openPreferences()
+  else
     setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+  end
 end
 
 caffeine:setClickCallback(caffeineClicked)
