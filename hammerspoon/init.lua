@@ -4,7 +4,6 @@ require 'reload'
 
 require 'caffeine'
 require 'mouse'
-require 'wifi'
 require 'windows'
 
 hs.hotkey.bind(mash, 'y', hs.toggleConsole)
