@@ -1,5 +1,5 @@
 -- Set grid to 50x50 with no margin.
-hs.grid.setGrid({50, 50})
+hs.grid.setGrid('50x50')
 hs.grid.setMargins({0, 0})
 
 -- Helper to locate the current window and only return it it's visible
