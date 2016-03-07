@@ -49,6 +49,10 @@ unbind %
 bind | split-window -h
 bind - split-window -v
 
+# Bind Alt-Left and Alt-Right
+bind -n M-Left previous-window
+bind -n M-Right next-window
+
 # Open new window with F5
 bind -n F5 new-window
 
