@@ -13,7 +13,6 @@ alias l="ls"
 alias ll="ls -l"
 alias la="ls -al"
 alias less="less -R"
-alias psgrep="ps wwwaux | head -n1 && ps wwwaux | grep -v egrep | egrep -i"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
@@ -24,6 +23,9 @@ alias tailf="tail -F"
 if which pygmentize >/dev/null; then
   function lessh { pygmentize -g "$@" | /usr/bin/less -R; }
 fi
+
+
+
 
 # Configure shell options
 export PROMPT_DIRTRIM=5
@@ -56,6 +58,17 @@ case `uname` in
       [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
       ;;
 esac
+
+# Process list search with full output
+function psgrep {
+  PS_OUT=$(ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tt,stat,start,time,command)
+  echo "${PS_OUT}" 2>/dev/null| head -n1
+  if [[ -n ${1} ]]; then
+    echo "${PS_OUT}" | grep ${1}
+  else
+    echo "${PS_OUT}"
+  fi
+}
 
 # Set shell line
 function prompt_lastcmd {
