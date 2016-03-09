@@ -1,4 +1,6 @@
 brew/**
+cask/**
 vim/**
 !vim/config/*
+Gemfile.lock
 .DS_Store

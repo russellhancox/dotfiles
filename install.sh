@@ -16,17 +16,29 @@ for f in ${LS}; do
       ln -s ${HOME}/.dotfiles/${f} ${HOME}/.${f} >/dev/null 2>&1
 done
 
+if uname | grep -q Darwin; then
+  echo "Mac: installing homebrew and brew/cask packages"
+  git clone https://github.com/mxcl/homebrew.git "${HOME}/.dotfiles/brew"
+  ${HOME}/.dotfiles/brew/bin/brew install tap Homebrew/bundle
+  ${HOME}/.dotfiles/brew/bin/brew bundle ${HOME}/.dotfiles/Brewfile
+
+  echo "Mac: setting some defaults"
+  ${HOME}/.dotfiles/osx_defaults.sh
+fi
+
+echo "Install eggs"
+sudo easy_install pip
+pip install -r "${HOME}/.dotfiles/Pipfile" -q
+
+echo "Installing gems"
+gem install bundler --user-install -q
+bundle install --gemfile "${HOME}/.dotfiles/Gemfile" --quiet
+
 echo "Installing latest vundle bundle"
 rm -fr ${HOME}/.vim/bundle/vundle/* ${HOME}/.vim/bundle/vundle/.* 2>/dev/null
 git clone https://github.com/gmarik/vundle.git ${HOME}/.vim/bundle/vundle
 echo "Installing other vim bundles"
 vim -N -u ${HOME}/.vim/config/bundles.vim +BundleInstall +quitall
-
-# If running on a Mac, set-up Mac defaults..
-if uname | grep -q Darwin; then
-  echo "Running on a Mac, setting Mac defaults"
-  ${HOME}/.dotfiles/osx_defaults.sh
-fi
 
 echo "*****"
 echo "Complete"

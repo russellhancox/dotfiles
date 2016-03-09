@@ -157,11 +157,8 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
   "https://github.com/Lokaltog/powerline-fonts/blob/master/SourceCodePro/Sauce%20Code%20Powerline%20Light.otf?raw=true"
 
-# Install bpython
-sudo easy_install bpython >/dev/null
-
-# Install pry
-sudo gem install pry >/dev/null
+# Install pip, needed later on
+sudo easy_install pip
 
 ###############################################################################
 # Misc
