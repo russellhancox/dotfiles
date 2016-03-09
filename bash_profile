@@ -22,7 +22,7 @@ hash hub >/dev/null 2>&1 && alias git="hub"
 
 # Make less better
 if which pygmentize >/dev/null; then
-  export LESSOPEN="|pygmentize -g %s"
+  export LESSOPEN="|pygmentize -g %s 2>/dev/null"
 fi
 
 # Configure shell options
@@ -47,9 +47,12 @@ case `uname` in
       alias roottermdel="sudo launchctl asuser 0 launchctl remove rahterm"
       alias sshfs="sshfs -o allow_root"
       alias xcopen="proj=\$(find . -name '*xcworkspace' -maxdepth 1 -prune -print -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else proj=\$(find . -name '*.xcodeproj' -maxdepth 1 -print -prune -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else echo 'no project found'; fi; fi"
-      export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
-      export PATH=${HOME}/.brew/bin:$PATH
+
       export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=${HOME}/.cask"
+      export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
+      export PATH=${HOME}/.brew/bin:$PATH           # Add homebrew to path
+      export PATH=$(gem environment gempath | cut -d':' -f1)/bin:$PATH # Add gem bin to path
+
       source "$(brew --prefix)/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
       ;;
   "Linux")
@@ -78,7 +81,7 @@ function prompt_lastcmd {
 }
 
 function prompt_jobs {
-  [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙ "
+  [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙  "
 }
 
 function prompt_git {
