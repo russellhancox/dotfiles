@@ -5,7 +5,7 @@
 
 # Ask for the administrator password upfront
 echo "Need sudo password to set some OS X defaults"
-sudo -v
+sudo -v || exit
 
 ###############################################################################
 # General UI/UX                                                               #
