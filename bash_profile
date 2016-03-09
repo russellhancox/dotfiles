@@ -48,6 +48,7 @@ case `uname` in
       alias sshfs="sshfs -o allow_root"
       alias xcopen="proj=\$(find . -name '*xcworkspace' -maxdepth 1 -prune -print -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else proj=\$(find . -name '*.xcodeproj' -maxdepth 1 -print -prune -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else echo 'no project found'; fi; fi"
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
+      export PATH=${HOME}/.brew/bin:$PATH
       source "$(brew --prefix)/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
       ;;
   "Linux")

@@ -19,8 +19,9 @@ done
 if uname | grep -q Darwin; then
   echo "Mac: installing homebrew and brew/cask packages"
   git clone https://github.com/mxcl/homebrew.git "${HOME}/.dotfiles/brew"
-  ${HOME}/.dotfiles/brew/bin/brew install tap Homebrew/bundle
-  ${HOME}/.dotfiles/brew/bin/brew bundle ${HOME}/.dotfiles/Brewfile
+  ln -s ${HOME}/.dotfiles/brew ${HOME}/.brew >dev/null 2>&1
+  ${HOME}/.brew/bin/brew install tap Homebrew/bundle
+  ${HOME}/.brew/bin/brew bundle ${HOME}/.dotfiles/Brewfile
 
   echo "Mac: setting some defaults"
   ${HOME}/.dotfiles/osx_defaults.sh
