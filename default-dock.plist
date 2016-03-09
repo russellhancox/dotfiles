@@ -42,44 +42,6 @@
 			<key>tile-type</key>
 			<string>file-tile</string>
 		</dict>
-		<dict>
-			<key>GUID</key>
-			<integer>1187586908</integer>
-			<key>tile-data</key>
-			<dict>
-				<key>bundle-identifier</key>
-				<string>com.apple.Terminal</string>
-				<key>dock-extra</key>
-				<false/>
-				<key>file-data</key>
-				<dict>
-					<key>_CFURLAliasData</key>
-					<data>
-					AAAAAAC0AAMAAQAA0EY7SwAASCsAAAAAAAAA
-					TAAAKJ4AAM4/QdUAAAAACSD//gAAAAAAAAAA
-					/////wABAAgAAABMAAAASwAOABoADABUAGUA
-					cgBtAGkAbgBhAGwALgBhAHAAcAAPABoADABN
-					AGEAYwBpAG4AdABvAHMAaAAgAEgARAASACNB
-					cHBsaWNhdGlvbnMvVXRpbGl0aWVzL1Rlcm1p
-					bmFsLmFwcAAAEwABLwD//wAA
-					</data>
-					<key>_CFURLString</key>
-					<string>file:///Applications/Utilities/Terminal.app/</string>
-					<key>_CFURLStringType</key>
-					<integer>15</integer>
-				</dict>
-				<key>file-label</key>
-				<string>Terminal</string>
-				<key>file-mod-date</key>
-				<integer>0</integer>
-				<key>file-type</key>
-				<integer>1</integer>
-				<key>parent-mod-date</key>
-				<integer>0</integer>
-			</dict>
-			<key>tile-type</key>
-			<string>file-tile</string>
-		</dict>
 	</array>
 </dict>
 </plist>

@@ -8,7 +8,7 @@ if ! hash git >/dev/null 2>&1; then
 fi
 
 echo "Creating symlinks..."
-EXCLUDE="install.sh README.md solarized_dark.terminal tmux.conf.default \
+EXCLUDE="install.sh README.md tmux.conf.default \
          osx_defaults.sh default-dock.plist"
 LS=$(ls .dotfiles)
 for f in ${LS}; do

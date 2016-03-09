@@ -4,6 +4,7 @@
 #
 
 # Ask for the administrator password upfront
+echo "Need sudo password to set some OS X defaults"
 sudo -v
 
 ###############################################################################
@@ -152,22 +153,15 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Terminal                                                                    #
 ###############################################################################
 
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
-
 # Install Source Code Pro (Powerline) Light font
 curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
   "https://github.com/Lokaltog/powerline-fonts/blob/master/SourceCodePro/Sauce%20Code%20Powerline%20Light.otf?raw=true"
 
-# Use the Solarized Dark theme by default in Terminal.app
-open "$HOME/.dotfiles/solarized_dark.terminal"
-
-sleep 2 # Wait a bit to make sure the theme is loaded
-defaults write com.apple.terminal "Default Window Settings" -string "solarized_dark"
-defaults write com.apple.terminal "Startup Window Settings" -string "solarized_dark"
-
 # Install bpython
 sudo easy_install bpython >/dev/null
+
+# Install pry
+sudo gem install pry >/dev/null
 
 ###############################################################################
 # Misc
@@ -190,6 +184,7 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
 
 # Set my account picture
+ln -s ~/.dotfiles/Avatar.jpg ~/Pictures
 sudo cp ~/.dotfiles/Avatar.jpg "/Library/User Pictures/rahatar.jpg"
 sudo dscl . delete /Users/${USER} jpegphoto
 sudo dscl . delete /Users/${USER} Picture
