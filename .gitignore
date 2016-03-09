@@ -1,6 +1,4 @@
-vim/bundle/*
-vim/sessions
-vim/vim
-vim/.netrwhist
-vim/backups/
+brew/**
+vim/**
+!vim/config/*
 .DS_Store
