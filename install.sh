@@ -8,7 +8,7 @@ if ! hash git >/dev/null 2>&1; then
 fi
 
 echo "Creating symlinks..."
-EXCLUDE="install.sh README.md tmux.conf.default \
+EXCLUDE="Avatar.jpg install.sh README.md tmux.conf.default \
          osx_defaults.sh default-dock.plist \
          Brewfile Pipfile Gemfile Gemfile.lock"
 uname | grep -q Darwin && EXCLUDE="ls_colors ${EXCLUDE}"
