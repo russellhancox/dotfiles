@@ -15,7 +15,7 @@ uname | grep -q Darwin && EXCLUDE="ls_colors ${EXCLUDE}"
 LS=$(ls .dotfiles)
 for f in ${LS}; do
   echo "${EXCLUDE}" | grep -q ${f} || \
-      ln -s ${HOME}/.dotfiles/${f} ${HOME}/.${f} >/dev/null 2>&1
+      ln -sTf ${HOME}/.dotfiles/${f} ${HOME}/.${f} >/dev/null 2>&1
 done
 
 if uname | grep -q Darwin; then
@@ -24,6 +24,7 @@ if uname | grep -q Darwin; then
   ln -fs ${HOME}/.dotfiles/brew ${HOME}/.brew >/dev/null 2>&1
   ${HOME}/.brew/bin/brew tap Homebrew/bundle
   ${HOME}/.brew/bin/brew bundle --file=${HOME}/.dotfiles/Brewfile
+  ${HOME}/.brew/bin/brew cleanup
 
   echo "Mac: setting some defaults"
   ${HOME}/.dotfiles/osx_defaults.sh
