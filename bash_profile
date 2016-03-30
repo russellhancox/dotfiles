@@ -23,6 +23,8 @@ hash hub >/dev/null 2>&1 && alias git="hub"
 # Make less better
 if which pygmentize >/dev/null; then
   export LESSOPEN="|pygmentize -g %s 2>/dev/null"
+  alias lessyn="/usr/bin/less -R"
+  alias less="less -L"
 fi
 
 # Configure shell options
