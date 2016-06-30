@@ -1,4 +1,4 @@
-cask_args appdir: '/Applications', caskroom: '~/.dotfiles/cask'
+cask_args appdir: '/Applications', caskroom: '~/brew/cask'
 
 tap 'homebrew/versions'
 tap 'caskroom/cask'

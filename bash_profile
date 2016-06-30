@@ -47,15 +47,17 @@ case `uname` in
       alias catplist="plutil -convert xml1 -o -"    # cat a plist even if it's binary
       alias rootterm="sudo launchctl asuser 0 launchctl submit -l rahterm -- /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
       alias roottermdel="sudo launchctl asuser 0 launchctl remove rahterm"
-      alias sshfs="sshfs -o allow_root"
+      alias sshfs="sshfs -oallow_root"
       alias xcopen="proj=\$(find . -name '*xcworkspace' -maxdepth 1 -prune -print -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else proj=\$(find . -name '*.xcodeproj' -maxdepth 1 -print -prune -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else echo 'no project found'; fi; fi"
 
-      export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=${HOME}/.cask"
+      BREW_PATH="${HOME}/brew"
+
+      export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=${BREW_PATH}/cask"
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
-      export PATH=${HOME}/.brew/bin:$PATH           # Add homebrew to path
+      export PATH=${BREW_PATH}/bin:$PATH            # Add homebrew to path
       export PATH=$(gem environment gempath | cut -d':' -f1)/bin:$PATH # Add gem bin to path
 
-      source "$(brew --prefix)/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
+      source "${BREW_PATH}/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
       ;;
   "Linux")
       alias ls="ls --color -h"                      # Show colorized output and human file sizes
