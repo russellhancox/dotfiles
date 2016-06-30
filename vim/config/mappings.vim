@@ -47,6 +47,10 @@ command! C0 :set colorcolumn=0
 command! SudoWrite set noro | w !sudo tee % >/dev/null
 cmap w!! SudoWrite<CR>
 
+" In case I fat-finger W/Wq.
+command! W write
+command! Wq wq
+
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
