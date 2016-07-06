@@ -12,5 +12,4 @@ set listchars+=nbsp:·
 set listchars+=extends:#
 
 " Use rainbow highlighting for parentheses
-let g:rbpt_max = 16
-au VimEnter * RainbowParenthesesToggleAll
+au VimEnter * RainbowParentheses

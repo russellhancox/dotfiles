@@ -3,23 +3,50 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" Plugin manager
 Plugin 'gmarik/vundle'
 
+" Show Git status on left of screen.
 Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
-Plugin 'duff/vim-scratch'
-Plugin 'ervandew/supertab'
-Plugin 'kien/ctrlp.vim'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'majutsushi/tagbar'
-Plugin 'mkitt/tabline.vim'
+
+" Ctrl+P: file, MRU and buffer search.
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" EasyMotion, use <Leader><Leader>s and replace search
+Plugin 'easymotion/vim-easymotion'
+
+" Rainbow parens
+Plugin 'junegunn/rainbow_parentheses.vim'
+
+" Startup screen
+Plugin 'mhinz/vim-startify'
+
+" Colorscheme
 Plugin 'Pychimp/vim-luna'
+
+" Puppet syntax/highlighting
 Plugin 'rodjek/vim-puppet'
+
+" File browser
 Plugin 'scrooloose/nerdtree'
+
+" Show syntax errors upon save.
 Plugin 'scrooloose/syntastic'
+
+" Typing 'ga' over a character reveals representation
+" in unicode, HTML, etc.
 Plugin 'tpope/vim-characterize'
-Plugin 'tpope/vim-fugitive'
+
+" Sensible VIM defaults. Like nocompatible mode on steroids.
 Plugin 'tpope/vim-sensible'
+
+" The nice bar at the bottom.
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+if has('osx')
+  " Show documentation in Dash.
+  Plugin 'rizzatti/dash.vim'
+endif
 
 filetype plugin indent on
