@@ -44,9 +44,4 @@ Plugin 'tpope/vim-sensible'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-if has('osx')
-  " Show documentation in Dash.
-  Plugin 'rizzatti/dash.vim'
-endif
-
 filetype plugin indent on
