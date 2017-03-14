@@ -58,7 +58,7 @@ case `uname` in
       alias sshfs="sshfs -oallow_root"
       alias xcopen="proj=\$(find . -name '*xcworkspace' -maxdepth 1 -prune -print -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else proj=\$(find . -name '*.xcodeproj' -maxdepth 1 -print -prune -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else echo 'no project found'; fi; fi"
 
-      BREW_PATH="${HOME}/brew"
+      BREW_PATH="${HOME}/.brew"
 
       export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=${BREW_PATH}/cask"
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
@@ -80,7 +80,7 @@ function psgrep {
   PS_OUT=$(ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tt,stat,start,time,command)
   echo "${PS_OUT}" 2>/dev/null| head -n1
   if [[ -n ${1} ]]; then
-    echo "${PS_OUT}" | grep ${1}
+    echo "${PS_OUT}" | grep ${@}
   else
     echo "${PS_OUT}"
   fi
