@@ -25,6 +25,10 @@ mkcd () {
   cd "$*"
 }
 
+hr () {
+  printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+}
+
 # Make less better
 if which pygmentize >/dev/null; then
   export LESSOPEN="|pygmentize -g %s 2>/dev/null"
