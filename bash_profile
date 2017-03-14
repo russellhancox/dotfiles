@@ -20,6 +20,11 @@ alias cd..="echo 'cd SPACE .., idiot.'; cd .."
 alias tailf="tail -F"
 hash hub >/dev/null 2>&1 && alias git="hub"
 
+mkcd () {
+  mkdir -p "$*"
+  cd "$*"
+}
+
 # Make less better
 if which pygmentize >/dev/null; then
   export LESSOPEN="|pygmentize -g %s 2>/dev/null"
@@ -36,6 +41,9 @@ export HISTIGNORE="fg bg history"
 export HISTSIZE=1000000
 export HISTTIMEFORMAT='%F %T '
 stty -ixon
+
+# Go!
+export GOPATH="${HOME}/src/go"
 
 # Configure Ctrl+W to backwards-kill-word so I can Ctrl+W with file paths
 stty werase undef
