@@ -14,17 +14,17 @@ EXCLUDE="Avatar.jpg install.sh README.md tmux.conf.default \
 uname | grep -q Darwin && EXCLUDE="ls_colors ${EXCLUDE}"
 LS=$(ls .dotfiles)
 for f in ${LS}; do
-  echo "${EXCLUDE}" | grep -q ${f} || \
-      ln -sTf ${HOME}/.dotfiles/${f} ${HOME}/.${f} >/dev/null 2>&1
+  grep -q ${f} <<<"${EXCLUDE}" || ln -sf ${HOME}/.dotfiles/${f} ${HOME}/.${f}
 done
 
 if uname | grep -q Darwin; then
   echo "Mac: installing homebrew and brew/cask packages"
   echo "This will take a while!"
-  git clone https://github.com/mxcl/homebrew.git "${HOME}/brew" >/dev/null || true
-  ${HOME}/brew/bin/brew tap Homebrew/bundle >/dev/null
-  ${HOME}/brew/bin/brew bundle --file=${HOME}/.dotfiles/Brewfile
-  ${HOME}/brew/bin/brew cleanup
+  git clone https://github.com/Homebrew/brew "${HOME}/brew" >/dev/null || true
+  export PATH=$PATH:${HOME}/brew/bin
+  brew tap Homebrew/bundle >/dev/null
+  brew bundle --file=${HOME}/.dotfiles/Brewfile
+  brew cleanup
 
   echo "Mac: setting some defaults"
   ${HOME}/.dotfiles/osx_defaults.sh
