@@ -20,12 +20,12 @@ alias cd..="echo 'cd SPACE .., idiot.'; cd .."
 alias tailf="tail -F"
 hash hub >/dev/null 2>&1 && alias git="hub"
 
-mkcd () {
+function mkcd {
   mkdir -p "$*"
   cd "$*"
 }
 
-hr () {
+function hr {
   printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 }
 
@@ -70,6 +70,10 @@ case `uname` in
       export PATH=$(gem environment gempath | cut -d':' -f1)/bin:$PATH # Add gem bin to path
 
       source "${BREW_PATH}/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
+
+      function title {
+        echo -ne "\033]0;"$*"\007"
+      }
       ;;
   "Linux")
       alias ls="ls --color -h"                      # Show colorized output and human file sizes
