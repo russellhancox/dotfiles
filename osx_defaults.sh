@@ -29,6 +29,10 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
+# Dark Graphite Theme
+defaults write -globalDomain AppleInterfaceStyle -string Dark
+defaults write -globalDomain AppleAquaColorVariant -int 6
+
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
@@ -67,6 +71,17 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+
+# Use Fn to expand control strip instead of showing function keys
+defaults delete com.apple.touchbar.agent PresentationModeGlobal
+defaults write com.apple.touchbar.agent PresentationModeFnModes -dict appWithControlStrip -string fullControlStrip
+
+# Default control strip items
+defaults write com.apple.controlstrip MiniCustomized -array \
+  -string com.apple.system.brightness \
+  -string com.apple.system.volume \
+  -string com.apple.system.mute \
+  -string com.apple.system.screen-lock
 
 ###############################################################################
 # Screen                                                                      #
@@ -154,11 +169,8 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 ###############################################################################
 
 # Install Source Code Pro (Powerline) Light font
-curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
-  "https://github.com/Lokaltog/powerline-fonts/blob/master/SourceCodePro/Sauce%20Code%20Powerline%20Light.otf?raw=true"
-
-# Install pip, needed later on
-sudo easy_install pip
+sudo curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
+  "https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20for%20Powerline.otf?raw=true"
 
 ###############################################################################
 # Misc
