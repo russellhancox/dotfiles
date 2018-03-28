@@ -60,9 +60,9 @@ case `uname` in
       alias rootterm="sudo launchctl asuser 0 launchctl submit -l rahterm -- /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
       alias roottermdel="sudo launchctl asuser 0 launchctl remove rahterm"
       alias sshfs="sshfs -oallow_root"
-      alias xcopen="proj=\$(find . -name '*xcworkspace' -maxdepth 1 -prune -print -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else proj=\$(find . -name '*.xcodeproj' -maxdepth 1 -print -prune -quit); if [[ -n \"\${proj}\" ]]; then open \"\${proj}\"; else echo 'no project found'; fi; fi"
+      alias xcopen="X=\$(pwd); while [[ "\${X}" != "/" ]]; do PROJ=\$(find \${X} -name '*.xcworkspace' -maxdepth 1 -prune -print -quit); [[ -z \${PROJ} ]] && PROJ=\$(find \${X} -name '*.xcodeproj' -maxdepth 1 -prune -print -quit); if [[ -n \${PROJ} ]]; then open \${PROJ}; break; fi; X=\$(dirname \${X}); done"
 
-      BREW_PATH="${HOME}/.brew"
+      BREW_PATH="${HOME}/brew"
 
       export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=${BREW_PATH}/cask"
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
