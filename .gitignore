@@ -6,3 +6,8 @@ vim/*
 
 Gemfile.lock
 .DS_Store
+
+Alfred.alfredpreferences/clipboard/snippets.alfdb
+Alfred.alfredpreferences/preferences/local
+Alfred.alfredpreferences/remote
+Alfred.alfredpreferences/workflows
