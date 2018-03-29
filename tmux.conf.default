@@ -19,17 +19,6 @@ set -g default-path "~"
 # Rename the window title to be the current 'application'
 set -g automatic-rename on
 
-# Vim-style copy
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-
-# This prevents Ctrl-clicking URLs :(
-set mouse-select-pane off
-
-# Only constrain a window size if another client is actually looking at the
-# same window
-setw -g aggressive-resize on
-
 # Colors
 # To see a list of colours:
 #   for i in {0..255} ; do     printf "\x1b[38;5;${i}mcolour${i}\n"; done | less
