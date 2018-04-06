@@ -4,9 +4,6 @@ new-session -s shells
 # Set C-o as command prefix
 set -g prefix C-o
 
-# Mouse Mode!
-set -g mouse on
-
 # Vi mode
 set -g mode-keys vi
 
