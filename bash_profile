@@ -39,7 +39,6 @@ fi
 # Configure shell options
 shopt -s cdspell
 export PROMPT_DIRTRIM=5
-export GREP_OPTIONS="--color=auto"
 export LESSHISTFILE="-"
 export HISTIGNORE="fg bg history"
 export HISTSIZE=1000000
@@ -68,6 +67,7 @@ case `uname` in
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
       export PATH=${BREW_PATH}/bin:$PATH            # Add homebrew to path
       export PATH=$(gem environment gempath | cut -d':' -f1)/bin:$PATH # Add gem bin to path
+      export GREP_OPTIONS="--color=auto"
 
       source "${BREW_PATH}/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
 
@@ -110,7 +110,7 @@ function prompt_lastcmd {
 }
 
 function prompt_jobs {
-  [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙  "
+  [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙ "
 }
 
 function prompt_git {

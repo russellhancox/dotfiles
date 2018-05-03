@@ -55,9 +55,3 @@ nnoremap vd "_d
 " remaining window.
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-
-
-" Use easymotion instead of normal search.
-map / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
