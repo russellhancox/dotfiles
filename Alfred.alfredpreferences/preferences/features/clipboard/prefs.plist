@@ -4,7 +4,5 @@
 <dict>
 	<key>enabled</key>
 	<true/>
-	<key>fastAppend</key>
-	<true/>
 </dict>
 </plist>
