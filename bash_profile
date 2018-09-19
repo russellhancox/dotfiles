@@ -126,19 +126,19 @@ function prompt_git {
 }
 
 function ps1 {
-  DEFAULT='\[\[\e[0m\]'
-  BLACK='\[\e[0;30m\]'
-  RED='\[\e[0;31m\]'
-  GREEN='\[\e[0;32m\]'
-  YELLOW='\[\e[0;33m\]'
-  BLUE='\[\e[0;34m\]'
-  PURPLE='\[\e[0;35m\]'
-  CYAN='\[\e[0;36m\]'
-  WHITE='\[\e[0;37m\]'
+  DEFAULT=$(tput sgr0)
+  BLACK=$(tput setaf 0)
+  RED=$(tput setaf 1)
+  GREEN=$(tput setaf 2)
+  YELLOW=$(tput setaf 3)
+  BLUE=$(tput setaf 4)
+  PURPLE=$(tput setaf 5)
+  CYAN=$(tput setaf 6)
+  WHITE=$(tput setaf 7)
 
-  export PS1="${YELLOW}\u@${HOSTNAME} ${BLUE}\w ${RED}"\
+  export PS1="${DEFAULT}${YELLOW}\u@${HOSTNAME} ${BLUE}\w ${RED}"\
 "\$(prompt_lastcmd 2>/dev/null)${BLUE}\$(prompt_jobs 2>/dev/null)"\
-"${GREEN}\$(prompt_git 2>/dev/null)\n${BLUE}» ${DEFAULT}"
+"${GREEN}\$(prompt_git 2>/dev/null)\n${BLUE}»${DEFAULT} "
 }
 ps1
 
