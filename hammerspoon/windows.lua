@@ -2,7 +2,7 @@
 hs.grid.setGrid('50x50')
 hs.grid.setMargins({0, 0})
 
--- Helper to locate the current window and only return it it's visible
+-- Helper to locate the current window and only return if it's visible
 local function curWin()
   local win = hs.window.focusedWindow()
   if win and win:isVisible() then

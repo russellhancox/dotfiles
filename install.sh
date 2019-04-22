@@ -9,13 +9,9 @@ fi
 
 function symlinks {
   echo "Creating symlinks..."
-  EXCLUDE="Avatar.jpg install.sh README.md tmux.conf.default \
-           osx_defaults.sh default-dock.plist \
-           Brewfile Pipfile Gemfile Gemfile.lock"
-  uname | grep -q Darwin && EXCLUDE="ls_colors ${EXCLUDE}"
-  LS=$(ls .dotfiles)
-  for f in ${LS}; do
-    echo "${EXCLUDE}" | grep -q ${f} || ln -sf ${HOME}/.dotfiles/${f} ${HOME}/.${f}
+  INCLUDE="bash_profile gitconfig gitignore vim vimrc"
+  for f in "${INCLUDE}"; do
+    ln -sf ${HOME}/.dotfiles/${f} ${HOME}/.${f}
   done
 }
 
@@ -25,9 +21,6 @@ function homebrew {
     echo "This will take a while!"
     git clone https://github.com/Homebrew/brew "${HOME}/brew" >/dev/null || true
     export PATH=$PATH:${HOME}/brew/bin
-    brew tap Homebrew/bundle >/dev/null
-    brew bundle --file=${HOME}/.dotfiles/Brewfile
-    brew cleanup
   fi
 }
 
@@ -36,18 +29,6 @@ function mac_defaults {
     echo "Mac: setting some defaults"
     ${HOME}/.dotfiles/osx_defaults.sh
   fi
-}
-
-function eggs {
-  echo "Installing eggs"
-  sudo easy_install pip
-  pip install -r "${HOME}/.dotfiles/Pipfile" -q
-}
-
-function gems {
-  echo "Installing gems"
-  gem install bundler --user-install -q
-  bundle install --gemfile "${HOME}/.dotfiles/Gemfile" --quiet
 }
 
 function vim {
@@ -62,15 +43,11 @@ function all {
   symlinks && \
     homebrew && \
     mac_defaults && \
-    vim && \
-    eggs && \
-    gems
+    vim
 }
 
 [[ $@ == *'-symlinks'* ]] && symlinks()
 [[ $@ == *'-homebrew'* ]] && homebrew()
 [[ $@ == *'-mac_defaults'* ]] && mac_defaults()
-[[ $@ == *'-eggs'* ]] && eggs()
-[[ $@ == *'-gems'* ]] && gems()
 [[ $@ == *'-vim'* ]] && vim()
 [[ $@ == *'-all'* ]] && all()

@@ -4,5 +4,16 @@
 <dict>
 	<key>enabled</key>
 	<true/>
+	<key>hotkey</key>
+	<dict>
+		<key>key</key>
+		<integer>0</integer>
+		<key>mod</key>
+		<integer>0</integer>
+		<key>string</key>
+		<string></string>
+	</dict>
+	<key>persistFor</key>
+	<integer>2</integer>
 </dict>
 </plist>
