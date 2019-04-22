@@ -1,14 +1,14 @@
 # Create and configure shells session
 new-session -As shells
 
+# Load prefix_highlight
+run-shell ~/.dotfiles/tmux/prefix_highlight
+
 # Set C-o as command prefix
 set -g prefix C-o
 
 # Vi mode
 set -g mode-keys vi
-
-# Fix pbcopy/pbpaste/open/launchctl
-set-option -g default-command "reattach-to-user-namespace -l bash"
 
 # Ensure color works
 set -g default-terminal "screen-256color"
@@ -48,24 +48,27 @@ bind r \
 bind -n M-Left previous-window
 bind -n M-Right next-window
 
-# Open new window with F5
+# Open new window with F5 and new window in current path with F6
 bind -n F5 new-window
+bind -n F6 new-window -c "#{pane_current_path}"
+
+# Rename current window with R
+bind-key R command-prompt -p "Name for this window: " "rename-window '%%'"
+bind-key M command-prompt -p "Index to move to: " "move-window -t '%%'"
 
 # Move a window in the list with Prefix-Left and Prefix-Right
 bind-key left swap-window -t -1
 bind-key right swap-window -t +1
 bind-key up move-window -r
 
-# Rename current window with R
-bind-key R command-prompt -p "Name for this window: " "rename-window '%%'"
-
 # Statusbar
 set status on
 set-option -g status on
 set-option -g status-interval 2
+set-option -g status-utf8 on
 set-option -g status-justify "left"
 set-option -g status-left ""
-set-option -g status-right "#[fg=colour2]#(~/.dotfiles/music.sh) #[fg=colour1]%H:%M #[fg=colour3]#h"
+set-option -g status-right "#{prefix_highlight} #[fg=colour1]%H:%M #[fg=colour2]%m/%d #[fg=colour3]#h"
 set-option -g status-right-length 50
 set-window-option -g window-status-format "#[fg=colour4] #I  #W "
 set-window-option -g window-status-current-format "#[bg=white]#[fg=colour24] #I #[bg=colour24]#[fg=white] #W "
