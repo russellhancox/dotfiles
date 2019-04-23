@@ -16,7 +16,6 @@ alias less="less -R"
 alias servehere="python -m SimpleHTTPServer 2>/dev/null"
 alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-alias cd..="echo 'cd SPACE .., idiot.'; cd .."
 alias tailf="tail -F"
 hash hub >/dev/null 2>&1 && alias git="hub"
 
@@ -24,17 +23,6 @@ function mkcd {
   mkdir -p "$*"
   cd "$*"
 }
-
-function hr {
-  printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-}
-
-# Make less better
-if which pygmentize >/dev/null; then
-  export LESSOPEN="|pygmentize -g %s 2>/dev/null"
-  alias lessyn="/usr/bin/less -R"
-  alias less="less -L"
-fi
 
 # Configure shell options
 shopt -s cdspell
@@ -45,9 +33,6 @@ export HISTSIZE=1000000
 export HISTTIMEFORMAT='%F %T '
 stty -ixon
 
-# Go!
-export GOPATH="${HOME}/src/go"
-
 # Configure Ctrl+W to backwards-kill-word so I can Ctrl+W with file paths
 stty werase undef
 bind '"\C-w": backward-kill-word'
@@ -56,17 +41,12 @@ case `uname` in
   "Darwin")
       alias ls="ls -OGh"                            # Show file flags, colorized output and human file sizes
       alias catplist="plutil -convert xml1 -o -"    # cat a plist even if it's binary
-      alias rootterm="sudo launchctl asuser 0 launchctl submit -l rahterm -- /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
-      alias roottermdel="sudo launchctl asuser 0 launchctl remove rahterm"
-      alias sshfs="sshfs -oallow_root"
       alias xcopen="X=\$(pwd); while [[ "\${X}" != "/" ]]; do PROJ=\$(find \${X} -name '*.xcworkspace' -maxdepth 1 -prune -print -quit); [[ -z \${PROJ} ]] && PROJ=\$(find \${X} -name '*.xcodeproj' -maxdepth 1 -prune -print -quit); if [[ -n \${PROJ} ]]; then open \${PROJ}; break; fi; X=\$(dirname \${X}); done"
 
       BREW_PATH="${HOME}/brew"
 
-      export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=${BREW_PATH}/cask"
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
       export PATH=${BREW_PATH}/bin:$PATH            # Add homebrew to path
-      export PATH=$(gem environment gempath | cut -d':' -f1)/bin:$PATH # Add gem bin to path
       export GREP_OPTIONS="--color=auto"
 
       source "${BREW_PATH}/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
@@ -79,7 +59,6 @@ case `uname` in
       alias ls="ls --color -h"                      # Show colorized output and human file sizes
       alias ps="ps f"                               # Show processes as an ASCII tree
       export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
-      [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
       ;;
 esac
 
