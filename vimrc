@@ -16,7 +16,7 @@
   set ignorecase                    " Ignore case when searching
   set modelines=0                   " Disable modelines
   set mouse=a                       " Enable mouse support
-  set number                        " Show line number gutter
+  set number relativenumber         " Show line number gutter in hybrid mode
   set scrolloff=5                   " Keep cursor 5 lines from top/bottom
   set shortmess+=Ia                 " Hide/shorten certain messages
   set shortmess-=l                  " ^^^
