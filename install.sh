@@ -9,7 +9,7 @@ fi
 
 function symlinks {
   echo "Creating symlinks..."
-  INCLUDE="bash_profile gitconfig gitignore vim vimrc"
+  INCLUDE="bash_profile gitconfig gitignore vim vimrc tmux.conf"
   for f in "${INCLUDE}"; do
     ln -sf ${HOME}/.dotfiles/${f} ${HOME}/.${f}
   done
