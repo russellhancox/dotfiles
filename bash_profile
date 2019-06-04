@@ -50,10 +50,6 @@ case `uname` in
       export GREP_OPTIONS="--color=auto"
 
       source "${BREW_PATH}/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
-
-      function title {
-        echo -ne "\033]0;"$*"\007"
-      }
       ;;
   "Linux")
       alias ls="ls --color -h"                      # Show colorized output and human file sizes
@@ -70,15 +66,6 @@ function psgrep {
     echo "${PS_OUT}" | grep ${@}
   else
     echo "${PS_OUT}"
-  fi
-}
-
-#
-function shellbadge {
-  if [[ ${TERM_PROGRAM} != iTerm* ]]; then
-    echo "This only works on iTerm2"
-  else
-    printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n ${1} | base64)
   fi
 }
 
@@ -132,6 +119,9 @@ function man() {
   LESS_TERMCAP_us=$(printf "\e[1;32m") \
   /usr/bin/man "$@"
 }
+
+# Potentially add cargo to path
+[[ -e "${HOME}/.cargo/bin" ]] && PATH="${HOME}/.cargo/bin:${PATH}"
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.bash_profile.local" ]] && source ${HOME}/.bash_profile.local
