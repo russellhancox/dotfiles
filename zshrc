@@ -153,5 +153,3 @@ function man() {
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.zshrc.local" ]] && source ${HOME}/.zshrc.local
-
-export PATH="$HOME/.cargo/bin:$PATH"
