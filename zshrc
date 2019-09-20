@@ -7,7 +7,7 @@ setopt PROMPT_SUBST
 
 # Load colors
 autoload -U colors && colors
-export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(4~|.../%3~|%~) %{$fg[green]%}$(__git_ps1 '[%s]') "$'\n'"%{$fg[blue]%}» %{$reset_color%}"
+export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(4~|.../%3~|%~) %{$fg[green]%}"'$(__git_ps1 "[%s]")'$'\n'"%{$fg[blue]%}» %{$reset_color%}"
 
 # I use Vim
 hash vim >/dev/null 2>&1 && export EDITOR='vim'
