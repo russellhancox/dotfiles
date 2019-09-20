@@ -4,26 +4,30 @@
       "textSpacing" : 5,
       "subtext" : {
         "size" : 12,
-        "colorSelected" : "#FFFFFFC4",
-        "font" : "System Light",
-        "color" : "#00000065"
+        "colorSelected" : "#FFFFFFCC",
+        "font" : "System",
+        "color" : "#FFFFFF66"
       },
       "shortcut" : {
         "size" : 16,
         "colorSelected" : "#FFFFFFFF",
-        "font" : "System Light",
-        "color" : "#480069FF"
+        "font" : "System",
+        "color" : "#FEFFFF66"
       },
       "backgroundSelected" : "#016BDEFF",
       "text" : {
         "size" : 18,
         "colorSelected" : "#FFFFFFFF",
-        "font" : "System Light",
-        "color" : "#000000E5"
+        "font" : "System",
+        "color" : "#FFFFFFD8"
       },
       "iconPaddingHorizontal" : 8,
       "paddingVertical" : 4,
       "iconSize" : 40
+    },
+    "separator" : {
+      "color" : "#CBCBCBF3",
+      "thickness" : 0
     },
     "search" : {
       "paddingVertical" : 9,
@@ -33,29 +37,24 @@
         "size" : 45,
         "colorSelected" : "#000000FF",
         "font" : "System Light",
-        "color" : "#000000FF"
+        "color" : "#FFFFFFFF"
       },
-      "backgroundSelected" : "#B2D7FFFF"
+      "backgroundSelected" : "#B7D2FFFF"
     },
+    "scrollbar" : {
+      "color" : "#6D6D6DFF",
+      "thickness" : 2
+    },
+    "name" : "rah dark",
     "window" : {
-      "color" : "#FFFFFFE5",
+      "color" : "#000000D8",
       "paddingHorizontal" : 7,
       "width" : 559,
       "borderPadding" : 0,
       "borderColor" : "#0000007F",
-      "blur" : 4,
-      "roundness" : 3,
+      "blur" : 15,
+      "roundness" : -64,
       "paddingVertical" : 4
-    },
-    "credit" : "rah",
-    "separator" : {
-      "color" : "#CBCBCBF3",
-      "thickness" : 0
-    },
-    "scrollbar" : {
-      "color" : "#A9A9A9FF",
-      "thickness" : 2
-    },
-    "name" : "rah"
+    }
   }
 }
