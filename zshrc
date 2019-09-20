@@ -1,15 +1,22 @@
+# Git prompt support
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM="auto verbose"
+source ~/.dotfiles/git-prompt.sh
+setopt PROMPT_SUBST
+
 # Load colors
 autoload -U colors && colors
-export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(4~|.../%3~|%~) "$'\n'"%{$fg[blue]%}» %{$reset_color%}"
+export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(4~|.../%3~|%~) %{$fg[green]%}$(__git_ps1 '[%s]') "$'\n'"%{$fg[blue]%}» %{$reset_color%}"
 
 # I use Vim
 hash vim >/dev/null 2>&1 && export EDITOR='vim'
 
 # Set some options
-setopt autocd               # Automatically change to typed directories
-setopt autopushd            # Add directory changes to stack automatically
-setopt noclobber            # Don't allow redirecting to existing files without !. !! overrides.
-setopt interactivecomments  # Allow comments in interactive command entry
+setopt AUTOCD               # Automatically change to typed directories
+setopt AUTOPUSHD            # Add directory changes to stack automatically
+setopt NOCLOBBER            # Prevent redirecting to existing files without >!
+setopt INTERACTIVECOMMENTS  # Allow comments in interactive command entry
 
 # Reset Ctrl+A, Ctrl+E
 bindkey -e
