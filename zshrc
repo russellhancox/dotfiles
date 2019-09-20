@@ -11,6 +11,9 @@ setopt autopushd            # Add directory changes to stack automatically
 setopt noclobber            # Don't allow redirecting to existing files without !. !! overrides.
 setopt interactivecomments  # Allow comments in interactive command entry
 
+# Reset Ctrl+A, Ctrl+E
+bindkey -e
+
 # Configure completion
 autoload -U compinit
 compinit
