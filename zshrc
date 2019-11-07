@@ -9,6 +9,9 @@ setopt PROMPT_SUBST
 autoload -U colors && colors
 export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(4~|.../%3~|%~) %{$fg[green]%}"'$(__git_ps1 "[%s]")'$'\n'"%{$fg[blue]%}» %{$reset_color%}"
 
+# Set word boundaries for back/forward words
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 # I use Vim
 hash vim >/dev/null 2>&1 && export EDITOR='vim'
 
@@ -62,6 +65,7 @@ setopt EXTENDED_HISTORY     # Write the history file in the ":start:elapsed;comm
 setopt INC_APPEND_HISTORY   # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY        # Share history between sessions
 setopt HIST_REDUCE_BLANKS   # Remove unnecessary blanks before saving
+HISTFILE=~/.zsh_history
 
 # Go!
 export GOPATH="${HOME}/src/go"
