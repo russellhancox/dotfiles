@@ -39,6 +39,10 @@ alias killtabs="sed -i 's/	/  /g'"
 alias sshonce="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 alias tailf="tail -F"
 
+# This fixes bracketed paste problems (~00xxx01~) caused by a process turning on
+# bracketed paste and then terminating before cleaning up after itself.
+alias fixpaste='printf "\e[?2004l"'
+
 function mkcd {
   mkdir -p "$*"
   cd "$*"
