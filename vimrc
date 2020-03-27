@@ -16,12 +16,12 @@
   set ignorecase                    " Ignore case when searching
   set modelines=0                   " Disable modelines
   set mouse=a                       " Enable mouse support
-  set number relativenumber         " Show line number gutter in hybrid mode
+  set number                        " Show line number gutter
   set scrolloff=5                   " Keep cursor 5 lines from top/bottom
   set shortmess+=Ia                 " Hide/shorten certain messages
   set shortmess-=l                  " ^^^
   set noshowmode                    " Don't show mode on last line
-  set smartcase                     " If search includes an uppercase character,
+  set smartcase                     " If search includes an uppercase character
                                     " do a case-sensitive search
   set ttyfast                       " Make text scrolling smoother
   set undolevels=1000               " Lots of undo
