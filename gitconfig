@@ -1,19 +1,22 @@
 [user]
-email = russell@hancox.us
-name = Russell Hancox
+  email = russell@hancox.us
+  name = Russell Hancox
 
 [alias]
-vimdiff = "difftool -y -t vimdiff -R"
-cm = "commit"
-st = "status -sb"
-lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
-purr = "pull --rebase"
-ready = "rebase -i @{u}"
-graph = "log --graph --decorate"
-ignored = "ls-files --others -i --exclude-standard"
+  vimdiff = "difftool -y -t vimdiff -R"
+  cm = "commit"
+  st = "status -sb"
+  lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+  purr = "pull --rebase"
+  ready = "rebase -i @{u}"
+  graph = "log --graph --decorate"
+  ignored = "ls-files --others -i --exclude-standard"
 
 [push]
-default = current
+  default = current
 
 [diff]
-algorithm = patience
+  algorithm = patience
+
+[url "git@github.com:"]
+  pushInsteadOf = "https://github.com/"
