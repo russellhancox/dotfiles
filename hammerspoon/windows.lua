@@ -64,7 +64,8 @@ end
 -- Move current window around
 makeWindowHotkey('l', {x=0,  y=0,  w=25, h=50}) -- Left half
 makeWindowHotkey('r', {x=25, y=0,  w=25, h=50}) -- Right half
-makeWindowHotkey('0', {x=0,  y=0,  w=29, h=47}) -- Side-by-side 100 col diff
+makeWindowHotkey('0', {x=0,  y=0,  w=29, h=50}) -- Side-by-side 100 col diff
+makeWindowHotkey('4', {x=29, y=0,  w=21, h=50}) -- Right side 40%
 
 makeWindowHotkey('y', {x=25,  y=30, w=25, h=20}) -- Bottom right corner
 makeWindowHotkey('u', {x=25,  y=0, w=25, h=35}) -- Upper right corner
