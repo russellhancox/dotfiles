@@ -1,3 +1,7 @@
+# Lang
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Git prompt support
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
