@@ -42,6 +42,54 @@
 			<key>tile-type</key>
 			<string>file-tile</string>
 		</dict>
+		<dict>
+			<key>GUID</key>
+			<integer>3989863963</integer>
+			<key>tile-data</key>
+			<dict>
+				<key>book</key>
+				<data>
+				Ym9vaywCAAAAAAQQMAAAAAAAAAAAAAAAAAAAAAAAAAAA
+				AAAAAAAAAAAAAAAAAAAATAEAAAQAAAADAwAAAAAAIAwA
+				AAABAQAAQXBwbGljYXRpb25zCQAAAAEBAABpVGVybS5h
+				cHAAAAAIAAAAAQYAABAAAAAkAAAACAAAAAQDAACQUwAA
+				AAAAAAgAAAAEAwAAgS0CAAAAAAAIAAAAAQYAAEgAAABY
+				AAAACAAAAAAEAABBwqU6RRShtxgAAAABAgAAAgAAAAAA
+				AAAPAAAAAAAAAAAAAAAAAAAACAAAAAEJAABmaWxlOi8v
+				LwwAAAABAQAATWFjaW50b3NoIEhECAAAAAQDAAAAoCBo
+				dAAAAAgAAAAABAAAQcGvALKeLJEkAAAAAQEAADJFNkZF
+				MDgwLUU2MkEtNEI5QS1CODE2LURENzY5NDM4QUU4NBgA
+				AAABAgAAgQAAAAEAAADvEwAAAQAAAAAAAAAAAAAAAQAA
+				AAEBAAAvAAAAAAAAAAEFAACoAAAA/v///wEAAAAAAAAA
+				DQAAAAQQAAA4AAAAAAAAAAUQAABoAAAAAAAAABAQAACI
+				AAAAAAAAAEAQAAB4AAAAAAAAAAIgAAA4AQAAAAAAAAUg
+				AACoAAAAAAAAABAgAAC4AAAAAAAAABEgAADsAAAAAAAA
+				ABIgAADMAAAAAAAAABMgAADcAAAAAAAAACAgAAAYAQAA
+				AAAAADAgAABEAQAAAAAAABDQAAAEAAAAAAAAAA==
+				</data>
+				<key>bundle-identifier</key>
+				<string>com.googlecode.iterm2</string>
+				<key>dock-extra</key>
+				<false/>
+				<key>file-data</key>
+				<dict>
+					<key>_CFURLString</key>
+					<string>file:///Applications/iTerm.app/</string>
+					<key>_CFURLStringType</key>
+					<integer>15</integer>
+				</dict>
+				<key>file-label</key>
+				<string>iTerm</string>
+				<key>file-mod-date</key>
+				<integer>45371426336138</integer>
+				<key>file-type</key>
+				<integer>1</integer>
+				<key>parent-mod-date</key>
+				<integer>122663657794955</integer>
+			</dict>
+			<key>tile-type</key>
+			<string>file-tile</string>
+		</dict>
 	</array>
 </dict>
 </plist>
