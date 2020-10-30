@@ -132,6 +132,9 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool NO
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock orientation -string 'right';
 
+# Don't show recent apps in the dock.
+defaults write com.apple.dock show-recents -bool false;
+
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
