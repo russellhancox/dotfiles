@@ -29,9 +29,12 @@ setopt INTERACTIVECOMMENTS  # Allow comments in interactive command entry
 bindkey -e
 
 # Configure completion
-autoload -U compinit
-compinit
+autoload -Uz compinit
+fpath=( ~/.zsh/completion $fpath )
 zstyle ':completion:*' menu select
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/completion-cache
+compinit
 
 # Generic aliases
 alias l="ls"
