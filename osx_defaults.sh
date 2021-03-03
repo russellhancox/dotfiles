@@ -14,9 +14,6 @@ sudo -v || exit
 # Show battery percentage in menu bar
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
-# Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
-
 # Expanded Save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
@@ -27,14 +24,10 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Dark Graphite Theme
-defaults write -globalDomain AppleInterfaceStyle -string Dark
-defaults write -globalDomain AppleAquaColorVariant -int 6
+defaults write NSGlobalDomain AppleInterfaceStyle -string Dark
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
-
-# Disable Resume system-wide
-defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -45,11 +38,8 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: map bottom right corner to right-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+# Trackpad: enable 3-finger drag
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ThreeFingerDrag -bool true
 
 # Keyboard: Disable the terrible "Replace double-space with period" 'feature'
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
@@ -57,10 +47,6 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
-# Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
 # Use Fn to expand control strip instead of showing function keys
 defaults delete com.apple.touchbar.agent PresentationModeGlobal
@@ -76,16 +62,6 @@ defaults write com.apple.controlstrip MiniCustomized -array \
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
-
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "$HOME/Desktop"
-
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "png"
 
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
@@ -121,25 +97,21 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Change default window location
-defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME"
-
-# Change what appears on desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool NO
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool NO
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool NO
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 
 # Automatically hide and show the Dock and be on the right hand side.
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock orientation -string 'right';
+defaults write com.apple.dock orientation -string 'right'
 
 # Don't show recent apps in the dock.
-defaults write com.apple.dock show-recents -bool false;
+defaults write com.apple.dock show-recents -bool false
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
 # Create preferred dock entries
 /usr/libexec/PlistBuddy -c "Delete persistent-apps" ~/Library/Preferences/com.apple.dock.plist 2>/dev/null
+/usr/libexec/PlistBuddy -c "Delete persistent-others" ~/Library/Preferences/com.apple.dock.plist 2>/dev/null
 /usr/libexec/PlistBuddy -c "Merge /Users/${USER}/.dotfiles/default-dock.plist" ~/Library/Preferences/com.apple.dock.plist 2>/dev/null
 
 ###############################################################################
@@ -158,29 +130,11 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
 ###############################################################################
-# Terminal                                                                    #
-###############################################################################
-
-# Install Source Code Pro (Powerline) Light font
-sudo curl -Lo /Library/Fonts/SourceCodePowerlineLight.otf \
-  "https://github.com/powerline/fonts/blob/master/SourceCodePro/Source%20Code%20Pro%20for%20Powerline.otf?raw=true"
-
-###############################################################################
 # Misc
 ###############################################################################
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# Enable the debug menu in Disk Utility
-defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
-defaults write com.apple.DiskUtility advanced-image-options -bool true
-
-# Enable the WebKit Developer Tools in the Mac App Store
-defaults write com.apple.appstore WebKitDeveloperExtras -bool true
-
-# Enable Debug Menu in the Mac App Store
-defaults write com.apple.appstore ShowDebugMenu -bool true
 
 # Enable Xcode build timing
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
