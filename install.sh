@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ ${PWD} != ${HOME} ]]; then
   echo "Must be run from ${HOME}"
   exit 0
@@ -9,19 +11,11 @@ fi
 
 function symlinks {
   echo "Creating symlinks..."
-  INCLUDE="bash_profile gitconfig gitignore vim vimrc tmux.conf"
-  for f in "${INCLUDE}"; do
+  INCLUDE="zshrc gitconfig gitignore vim vimrc tmux.conf"
+  for f in ${INCLUDE}; do
+    echo "Symlinking ${HOME}/.dotfiles/${f} to ${HOME}/.${f}"
     ln -sf ${HOME}/.dotfiles/${f} ${HOME}/.${f}
   done
-}
-
-function homebrew {
-  if uname | grep -q Darwin; then
-    echo "Mac: installing homebrew and brew/cask packages"
-    echo "This will take a while!"
-    git clone https://github.com/Homebrew/brew "${HOME}/brew" >/dev/null || true
-    export PATH=$PATH:${HOME}/brew/bin
-  fi
 }
 
 function mac_defaults {
@@ -31,7 +25,7 @@ function mac_defaults {
   fi
 }
 
-function vim {
+function vim_settings {
   echo "Installing latest vundle bundle"
   rm -fr ${HOME}/.vim/bundle/vundle/* ${HOME}/.vim/bundle/vundle/.* 2>/dev/null
   git clone https://github.com/gmarik/vundle.git ${HOME}/.vim/bundle/vundle
@@ -41,13 +35,11 @@ function vim {
 
 function all {
   symlinks && \
-    homebrew && \
     mac_defaults && \
-    vim
+    vim_settings
 }
 
-[[ $@ == *'-symlinks'* ]] && symlinks()
-[[ $@ == *'-homebrew'* ]] && homebrew()
-[[ $@ == *'-mac_defaults'* ]] && mac_defaults()
-[[ $@ == *'-vim'* ]] && vim()
-[[ $@ == *'-all'* ]] && all()
+[[ "${@}" == *-symlinks* ]] && symlinks
+[[ "${@}" == *'-mac_defaults'* ]] && mac_defaults
+[[ "${@}" == *'-vim'* ]] && vim_settings
+[[ "${@}" == *'-all'* ]] && all
