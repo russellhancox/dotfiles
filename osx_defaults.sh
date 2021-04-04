@@ -44,6 +44,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad ThreeFingerDra
 # Keyboard: Disable the terrible "Replace double-space with period" 'feature'
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
+# Keyboard: Disable the equally terrible "Press and Hold" 'feature'
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
