@@ -78,81 +78,23 @@ setopt SHARE_HISTORY        # Share history between sessions
 setopt HIST_REDUCE_BLANKS   # Remove unnecessary blanks before saving
 HISTFILE=~/.zsh_history
 
-# Go!
-export GOPATH="${HOME}/src/go"
-
 case `uname` in
   "Darwin")
       alias ls="ls -OGh"                            # Show file flags, colorized output and human file sizes
       alias catplist="plutil -convert xml1 -o -"    # cat a plist even if it's binary
-      alias rootterm="sudo launchctl asuser 0 launchctl submit -l rahterm -- /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"
-      alias roottermdel="sudo launchctl asuser 0 launchctl remove rahterm"
-      alias sshfs="sshfs -oallow_root"
       alias xcopen="X=\$(pwd); while [[ "\${X}" != "/" ]]; do PROJ=\$(find \${X} -name '*.xcworkspace' -maxdepth 1 -prune -print -quit); [[ -z \${PROJ} ]] && PROJ=\$(find \${X} -name '*.xcodeproj' -maxdepth 1 -prune -print -quit); if [[ -n \${PROJ} ]]; then open \${PROJ}; break; fi; X=\$(dirname \${X}); done"
 
-      BREW_PATH="${HOME}/brew"
-
-      export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=${BREW_PATH}/cask"
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
-      export PATH=${BREW_PATH}/bin:$PATH            # Add homebrew to path
-      export PATH=$(gem environment gempath | cut -d':' -f1)/bin:$PATH # Add gem bin to path
-
-      source "${BREW_PATH}/Library/Contributions/brew_bash_completion.sh" 2>/dev/null
-
-      function title {
-        echo -ne "\033]0;"$*"\007"
-      }
       ;;
   "Linux")
       alias ls="ls --color -h"                      # Show colorized output and human file sizes
       alias ps="ps f"                               # Show processes as an ASCII tree
+
       export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
+
       [[ -e "${HOME}/.ls_colors" ]] && source ${HOME}/.ls_colors
       ;;
 esac
-
-# Process list search with full output
-function psgrep {
-  PS_OUT=$(ps -eo user,pid,ppid,%cpu,%mem,vsz,rss,tt,stat,start,time,command)
-  echo "${PS_OUT}" 2>/dev/null| head -n1
-  if [[ -n ${1} ]]; then
-    echo "${PS_OUT}" | grep ${@}
-  else
-    echo "${PS_OUT}"
-  fi
-}
-
-#
-function shellbadge {
-  if [[ ${TERM_PROGRAM} != iTerm* ]]; then
-    echo "This only works on iTerm2"
-  else
-    printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n ${1} | base64)
-  fi
-}
-
-# Set shell line
-function prompt_lastcmd {
-  RETVAL=$?
-  [[ $RETVAL -ne 0 ]] && printf "($RETVAL) "
-}
-
-function prompt_jobs {
-  [[ $(jobs -l | wc -l) -gt 0 ]] && printf "⚙  "
-}
-
-function prompt_git {
-  GIT_STATUS=$(git status --porcelain 2>&1)
-  if [ $? -eq 0 ]; then
-    GIT_BRANCH=$(git branch | grep '*' | awk '{print $2}')
-    if echo ${GIT_STATUS} | grep -q 'M'; then
-      printf "[${GIT_BRANCH} M] "
-    else
-      printf "[${GIT_BRANCH}] "
-    fi
-  fi
-}
-
 
 # Add color to manpages
 function man() {
