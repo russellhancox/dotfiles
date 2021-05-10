@@ -8,8 +8,7 @@
   st = "status -sb"
   lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
   purr = "pull --rebase"
-  ready = "rebase -i @{u}"
-  graph = "log --graph --decorate"
+  graph = "log --graph --decorate --oneline"
   ignored = "ls-files --others -i --exclude-standard"
 
 [push]
