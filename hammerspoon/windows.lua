@@ -29,7 +29,6 @@ local function suppressOtherKeys(modal)
     -- parse for flags, get keycode for each
     local kc, mods = tostring(v._hk):match("keycode: (%d+), mods: (0x[^ ]+)")
     local hkFlags = tonumber(mods)
-    print('kc: ' .. kc .. ', khFlags: ' .. hkFlags)
     local hkOriginal = hkFlags
     local flags = 0
     if (hkFlags &  256) ==  256 then hkFlags, flags = hkFlags -  256, flags | hs.eventtap.event.rawFlagMasks.command   end
