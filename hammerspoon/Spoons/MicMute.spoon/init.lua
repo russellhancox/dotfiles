@@ -89,6 +89,16 @@ function obj:bindHotkeys(mapping, latch_timeout)
 	return self
 end
 
+local function inputDeviceWatcherCallback(arg)
+	if string.find(arg, "dIn ") then
+		if hs.audiodevice.defaultInputDevice():muted() == nil then
+			obj.mute_menu:removeFromMenuBar()
+		else
+			obj.mute_menu:returnToMenuBar()
+		end
+		obj:updateMicMute(-1)
+	end
+end
 
 function obj:init()
 	obj.time_since_mute = 0
@@ -98,11 +108,8 @@ function obj:init()
 	end)
 	obj:updateMicMute(-1)
 
-	hs.audiodevice.watcher.setCallback(function(arg)
-		if string.find(arg, "dIn ") then
-			obj:updateMicMute(-1)
-		end
-	end)
+	hs.audiodevice.watcher.setCallback(inputDeviceWatcherCallback)
+	inputDeviceWatcherCallback('dIn ')
 	hs.audiodevice.watcher.start()
 end
 
