@@ -18,10 +18,16 @@ function obj:updateMicMute(muted)
 	if muted == -1 then
 		muted = hs.audiodevice.defaultInputDevice():muted()
 	end
-	if muted then
+	if muted == nil then
+		return
+	elseif muted then
 		obj.mute_menu:setTitle("📵 Muted")
+		obj.alert_sound:stop()
+		obj.alert_sound:play()
 	else
 		obj.mute_menu:setTitle("🎙 On")
+		obj.alert_sound:stop()
+		obj.alert_sound:play()
 	end
 end
 
@@ -73,12 +79,14 @@ function obj:bindHotkeys(mapping, latch_timeout)
 
 	if latch_timeout then
 		self.hotkey = hs.hotkey.bind(mods, key, function()
-			self:toggleMicMute()
 			self.time_since_mute = hs.timer.secondsSinceEpoch()
-		end, function()
-			if hs.timer.secondsSinceEpoch() > self.time_since_mute + latch_timeout then
-				self:toggleMicMute()
+			if hs.timer.secondsSinceEpoch() < self.time_since_release + latch_timeout then
+				return
 			end
+			self:toggleMicMute()
+		end, function()
+			self:toggleMicMute()
+			self.time_since_release = hs.timer.secondsSinceEpoch()
 		end)
 	else
 		self.hotkey = hs.hotkey.bind(mods, key, function()
@@ -102,6 +110,8 @@ end
 
 function obj:init()
 	obj.time_since_mute = 0
+	obj.time_since_release = 0
+	obj.alert_sound = hs.sound.getByName('Frog')
 	obj.mute_menu = hs.menubar.new()
 	obj.mute_menu:setClickCallback(function()
 		obj:toggleMicMute()

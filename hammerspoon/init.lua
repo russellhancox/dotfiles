@@ -15,7 +15,7 @@ caf:start()
 
 -- Shush
 mm = hs.loadSpoon('MicMute')
-mm:bindHotkeys({toggle={{}, 'f1'}}, 0.75)
+mm:bindHotkeys({toggle={{}, 'f1'}}, 0.5)
 
 -- Window movement config
 require 'windows'
