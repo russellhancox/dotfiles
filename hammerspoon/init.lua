@@ -2,13 +2,13 @@ require('hs.ipc')
 
 mash = {"cmd", "alt", "ctrl"}
 
+-- Shush
+shush = hs.loadSpoon('Shush')
+shush:start()
+
 -- Caffeinate
 caf = hs.loadSpoon('Caffeine')
 caf:start()
-
--- Shush
-mm = hs.loadSpoon('MicMute')
-mm:bindHotkeys({toggle={{}, 'f1'}}, 0.5)
 
 -- Window movement config
 require 'windows'
