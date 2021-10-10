@@ -1,4 +1,4 @@
-local poppop = hs.noises.new(function(et)
+poppop = hs.noises.new(function(et)
   if et == 3 then
     img = hs.image.imageFromPath(hs.configdir .. '/poppop.jpeg')
     fadelogo.image = img
