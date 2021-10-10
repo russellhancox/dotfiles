@@ -1,3 +1,5 @@
+require('hs.ipc')
+
 mash = {"cmd", "alt", "ctrl"}
 
 -- Caffeinate
@@ -14,3 +16,7 @@ require 'windows'
 -- Keys
 recbind = hs.loadSpoon('RecursiveBinder')
 require 'keys'
+
+-- Pop Pop!
+fadelogo = hs.loadSpoon('FadeLogo')
+require 'noises'
