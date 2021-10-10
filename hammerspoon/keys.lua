@@ -39,3 +39,4 @@ recursiveMenu = recbind.recursiveBind({
 })
 
 hs.hotkey.bind({}, 'F10', recursiveMenu)
+hs.hotkey.bind({}, 'F15', recursiveMenu)
