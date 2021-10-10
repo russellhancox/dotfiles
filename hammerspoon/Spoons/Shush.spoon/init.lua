@@ -28,6 +28,9 @@ obj.defaultMode = obj.modes.ptt
 --- changes the menu item's icon will change and a sound is played.
 function obj:updateState()
   local device = hs.audiodevice.defaultInputDevice()
+  if device:muted() == nil then
+    return
+  end
   local muted = false
   if obj.mode == obj.modes.ptt then
     if obj.pushed then
