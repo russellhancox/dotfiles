@@ -108,6 +108,16 @@ local function eventTapWatcher(event)
   end
 end
 
+-- Callback called each time input devices change
+local function inputDeviceWatcherCallback(arg)
+  if hs.audiodevice.defaultInputDevice():muted() == nil then
+    obj.menubar:removeFromMenuBar()
+  else
+    obj.menubar:returnToMenuBar()
+    obj:updateState()
+  end
+end
+
 --- Shush:init()
 function obj:init()
 end
@@ -129,6 +139,12 @@ function obj:start()
 
   obj.menubar = hs.menubar.new()
   obj:setMode(obj.defaultMode)
+
+  hs.audiodevice.watcher.setCallback(function()
+    inputDeviceWatcherCallback()
+  end)
+  inputDeviceWatcherCallback()
+  hs.audiodevice.watcher.start()
 end
 
 --- Shush:stop()
