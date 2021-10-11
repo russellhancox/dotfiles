@@ -5,7 +5,4 @@ poppop = hs.noises.new(function(et)
     fadelogo.image_size = img:size()
     fadelogo:start()
   end
-  if et == 1 then
-    hs.eventtap.scrollWheel({0, -10}, {})
-  end
 end):start()
