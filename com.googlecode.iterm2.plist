@@ -17,7 +17,7 @@
 	<key>DimOnlyText</key>
 	<true/>
 	<key>HapticFeedbackForEsc</key>
-	<false/>
+	<true/>
 	<key>HideScrollbar</key>
 	<false/>
 	<key>HideTab</key>
@@ -734,7 +734,7 @@
 		</dict>
 	</array>
 	<key>OpenArrangementAtStartup</key>
-	<true/>
+	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -781,7 +781,7 @@
 	<key>Size Changes Affect Profile</key>
 	<true/>
 	<key>SoundForEsc</key>
-	<false/>
+	<true/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.48972775722043299</real>
 	<key>StretchTabsToFillBar</key>
