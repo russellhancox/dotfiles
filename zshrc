@@ -27,6 +27,9 @@ setopt INTERACTIVECOMMENTS  # Allow comments in interactive command entry
 
 # Reset Ctrl+A, Ctrl+E
 bindkey -e
+# Make forward delete work
+bindkey "^[[3~"   delete-char
+bindkey "^[[3;5~" delete-char
 
 # Configure completion
 autoload -Uz compinit
