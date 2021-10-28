@@ -28,7 +28,7 @@ obj.defaultMode = obj.modes.ptt
 --- changes the menu item's icon will change and a sound is played.
 function obj:updateState()
   local device = hs.audiodevice.defaultInputDevice()
-  if device:muted() == nil then
+  if device:name() == nil then
     return
   end
   local muted = false
@@ -47,7 +47,11 @@ function obj:updateState()
       obj.menubar:setIcon(hs.spoons.resourcePath("record.pdf"), false)
     end
   end
-  device:setMuted(muted)
+  if muted then
+    device:setInputVolume(0)
+  else
+    device:setInputVolume(50.0)
+  end
   obj.alert_sound:stop()
   obj.alert_sound:play()
 end
