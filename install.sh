@@ -11,7 +11,7 @@ fi
 
 function symlinks {
   echo "Creating symlinks..."
-  INCLUDE="zshrc gitconfig gitignore vim vimrc tmux.conf"
+  INCLUDE="zshrc gitconfig gitignore vim vimrc tmux.conf hammerspoon"
   for f in ${INCLUDE}; do
     echo "Symlinking ${HOME}/.dotfiles/${f} to ${HOME}/.${f}"
     ln -sf ${HOME}/.dotfiles/${f} ${HOME}/.${f}
