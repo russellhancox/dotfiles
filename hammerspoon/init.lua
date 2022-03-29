@@ -2,10 +2,6 @@ require('hs.ipc')
 
 mash = {"cmd", "alt", "ctrl"}
 
--- Shush
-shush = hs.loadSpoon('Shush')
-shush:start()
-
 -- Caffeinate
 caf = hs.loadSpoon('Caffeine')
 caf:start()
