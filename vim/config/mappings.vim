@@ -10,6 +10,13 @@ imap <silent> <leader>... …
 " Map <Leader>P to toggle paste mode
 set pastetoggle=<Leader>p
 
+" Map <Leader>d, <Leader>D, and Leader<x> to no-yank cut to prevent clobbering
+" the default register when deleting stuff
+nnoremap <Leader>d "_d
+nnoremap <Leader>D "_D
+nnoremap <Leader>x "_x
+vnoremap <Leader>d "_d
+
 " Map <C-L> (redraw screen) to also turn off search highlighting until the next search
 nnoremap <C-L> :nohl<CR><C-L>
 
