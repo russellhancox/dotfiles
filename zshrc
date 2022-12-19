@@ -77,7 +77,7 @@ setopt HIST_IGNORE_ALL_DUPS # Don't record duplicates
 setopt HIST_IGNORE_SPACE    # Dont' record commands preceded with a space
 setopt EXTENDED_HISTORY     # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY   # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY        # Share history between sessions
+unsetopt SHARE_HISTORY      # Don't share history between sessions
 setopt HIST_REDUCE_BLANKS   # Remove unnecessary blanks before saving
 HISTFILE=~/.zsh_history
 
