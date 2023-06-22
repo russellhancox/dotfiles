@@ -11,7 +11,7 @@ setopt PROMPT_SUBST
 
 # Load colors
 autoload -U colors && colors
-export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(4~|.../%3~|%~) %{$fg[green]%}"'$(__git_ps1 "[%s]")'$'\n'"%{$fg[blue]%}» %{$reset_color%}"
+export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(8~|.../%7~|%~) %{$fg[green]%}"'$(__git_ps1 "[%s]")'$'\n'"%{$fg[blue]%}» %{$reset_color%}"
 
 # Set word boundaries for back/forward words
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
