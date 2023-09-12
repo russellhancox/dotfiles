@@ -65,7 +65,7 @@ end
 
 -- Add W-Mode, assign to mash+space, create menubar item when
 -- entering and delete it when exiting.
-local windowHotkey = hs.hotkey.modal.new(mash, 'space')
+windowHotkey = hs.hotkey.modal.new(mash, 'space')
 function windowHotkey:entered()
   menubar = hs.menubar.new()
   menubar:setTitle('W-Mode')

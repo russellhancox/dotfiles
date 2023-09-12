@@ -18,6 +18,7 @@ recbind.helperFormat.atScreenEdge = 0
 
 recursiveMenu = recbind.recursiveBind({
   [singleKey('space', 'hints')] = hs.hints.windowHints,
+  [singleKey('w', 'win')] = function() windowHotkey:enter() end,
   [singleKey('c', 'caf')] = function() caf:clicked() end,
   [singleKey('l', 'lock')] = appLaunchFn('ScreenSaverEngine.app'),
   [singleKey('f', 'file+')] = {
@@ -29,7 +30,6 @@ recursiveMenu = recbind.recursiveBind({
      [singleKey('c', 'Chrome')] = appLaunchFn('Google Chrome'),
      [singleKey('r', 'CodeRunner')] = appLaunchFn('CodeRunner'),
      [singleKey('n', 'Console')] = appLaunchFn('Console'),
-     [singleKey('g', 'GoPro')] = appLaunchFn('GoPro Webcam'),
      [singleKey('t', 'iTerm')] = appLaunchFn('iTerm'),
   },
   [singleKey('h', 'hammerspoon+')] = {
