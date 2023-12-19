@@ -7,28 +7,31 @@ hs.eventtap.new({
   local evt = event:getRawEventData().NSEventData
 
   -- check that rcmd is held
-  local flags = evt.modifierFlags & (
+  local combo = (
     hs.eventtap.event.rawFlagMasks.deviceRightCommand |
     hs.eventtap.event.rawFlagMasks.control   |
     hs.eventtap.event.rawFlagMasks.alternate |
     hs.eventtap.event.rawFlagMasks.shift
   )
 
-  if flags ~= hs.eventtap.event.rawFlagMasks.deviceRightCommand then
+  if (evt.modifierFlags & combo) ~= combo then
     return false
   end
-  if event:getType() ~= hs.eventtap.event.types.keyDown then
+  if event:getType() ~= hs.eventtap.event.types.keyUp then
     return false
   end
 
-  local firstChar = event:getCharacters(true)
+
+  local wantFirstChar = event:getCharacters(true):lower()
 
   for _, app in ipairs(hs.application.runningApplications()) do
     if app:kind() > 0 and not app:isFrontmost() then
-      local firstChar = app:title():sub(1, 1):lower()
-      if firstChar == event:getCharacters(true) then
-        app:activate()
-        return true
+      local title = app:title()
+      for word in title:gmatch("(%w+) *") do
+        if word:sub(1, 1):lower() == wantFirstChar then
+          app:activate()
+          return true
+        end
       end
     end
   end
