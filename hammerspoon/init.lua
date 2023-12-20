@@ -12,6 +12,3 @@ require 'windows'
 -- Keys
 recbind = hs.loadSpoon('RecursiveBinder')
 require 'keys'
-
--- Rcmd
-require 'rcmd'
