@@ -111,5 +111,8 @@ function man() {
   /usr/bin/man "$@"
 }
 
+# Load Homebrew
+[[ -e "/opt/homebrew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.zshrc.local" ]] && source ${HOME}/.zshrc.local
