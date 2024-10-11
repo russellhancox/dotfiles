@@ -9,7 +9,7 @@ local singleKey = recbind.singleKey
 
 -- Change the RecursiveBind styling to use Roboto Condensed and appear in the
 -- middle of the screen instead of the bottom edge.
-recbind.helperFormat.textFont = 'Roboto Condensed'
+recbind.helperFormat.textFont = 'Avenir Next Condensed'
 recbind.helperFormat.atScreenEdge = 0
 
 recursiveMenu = recbind.recursiveBind({
@@ -49,7 +49,4 @@ recursiveMenu = recbind.recursiveBind({
       [singleKey('r', 'Reload config')] = hs.reload,
   },
 })
-
 hs.hotkey.bind({}, 'F10', recursiveMenu)
-hs.hotkey.bind({}, 'F15', recursiveMenu)
-hs.hotkey.bind({}, 'F16', hs.hints.windowHints)
