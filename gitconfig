@@ -8,7 +8,7 @@
   st = "status -sb"
   lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
   purr = "pull --rebase"
-  graph = "log --graph --decorate --oneline"
+  graph = "log --graph --oneline --all"
   ignored = "ls-files --others -i --exclude-standard"
 
 [push]
@@ -17,5 +17,5 @@
 [diff]
   algorithm = patience
 
-[url "git@github.com:"]
-  pushInsteadOf = "https://github.com/"
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
