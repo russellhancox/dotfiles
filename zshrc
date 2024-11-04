@@ -112,7 +112,11 @@ function man() {
 }
 
 # Load Homebrew
-[[ -e "/opt/homebrew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -e "/opt/homebrew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  FPATH=$FPATH:/opt/homebrew/share/zsh/site-functions
+  compinit
+fi
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.zshrc.local" ]] && source ${HOME}/.zshrc.local
