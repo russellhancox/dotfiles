@@ -1,8 +1,7 @@
-" Load Vundle and other bundles
+" Load Plug and other bundles
   source ~/.vim/config/bundles.vim
-" NB: filetype plugin indent on is called at the end of that file
 
-  colorscheme luna-term
+  colorscheme catppuccin_mocha
 
   set nobackup                      " Don't leave backup files everywhere
   silent! set colorcolumn=80        " Leave a line down the screen at 80c
@@ -37,11 +36,6 @@
   silent! !mkdir ~/.vim/backups > /dev/null 2>&1
   silent! set undodir=~/.vim/backups
   silent! set undofile
-
-" Wildmenu
-  set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*DS_Store*
-  set wildignore+=*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*/.tox/*,*.egg-info/*
-  set wildmode=list:longest,full
 
 " Resize Vim windows when available size changes
   autocmd VimResized * wincmd =

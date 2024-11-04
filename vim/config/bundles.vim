@@ -1,47 +1,45 @@
-filetype off
+let data_dir = '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" Plugin manager
-Plugin 'gmarik/vundle'
+call plug#begin('~/.vim/bundle')
 
 " Show Git status on left of screen.
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Ctrl+P: file, MRU and buffer search.
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " EasyMotion, use <Leader><Leader>s and replace search
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " Rainbow parens
-Plugin 'junegunn/rainbow_parentheses.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 " Startup screen
-Plugin 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
 " Colorscheme
-Plugin 'Pychimp/vim-luna'
-
-" Puppet syntax/highlighting
-Plugin 'rodjek/vim-puppet'
+Plug 'Pychimp/vim-luna'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " File browser
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Show syntax errors upon save.
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " Typing 'ga' over a character reveals representation
 " in unicode, HTML, etc.
-Plugin 'tpope/vim-characterize'
+Plug 'tpope/vim-characterize'
 
 " Sensible VIM defaults. Like nocompatible mode on steroids.
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
 " The nice bar at the bottom.
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-filetype plugin indent on
+call plug#end()

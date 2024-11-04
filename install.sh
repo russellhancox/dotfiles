@@ -26,11 +26,8 @@ function mac_defaults {
 }
 
 function vim_settings {
-  echo "Installing latest vundle bundle"
-  rm -fr ${HOME}/.vim/bundle/vundle/* ${HOME}/.vim/bundle/vundle/.* 2>/dev/null
-  git clone https://github.com/gmarik/vundle.git ${HOME}/.vim/bundle/vundle
-  echo "Installing other vim bundles"
-  vim -N -u ${HOME}/.vim/config/bundles.vim +BundleInstall +quitall
+  echo "Installing Vim plugins"
+  vim -N -u ${HOME}/.vim/config/bundles.vim +PlugInstall! +quitall
 }
 
 function all {
