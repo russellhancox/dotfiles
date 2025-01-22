@@ -12,12 +12,11 @@ local function switchOutputDevice(name)
   if dev then
     success = dev:setDefaultOutputDevice()
     if success then
-      local notif = hs.notify.new(nil, {
+      hs.notify.new(nil, {
         title='Changed output audio device',
         subTitle=name,
         autoWithdraw=true,
-      })
-      notif:send()
+      }):send()
     end
   end
 end
@@ -37,7 +36,7 @@ local function outputDeviceTable()
   for i, dev in ipairs(hs.audiodevice.allOutputDevices()) do
     keyArray[singleKey(tostring(i), dev:name())] = function() switchOutputDevice(dev:name()) end
   end
-  return recbind.recursiveBind(keyArray)
+  return recbind.recursiveBind(keyArray)()
 end
 
 hs.hotkey.bind({}, 'F10', recbind.recursiveBind({
@@ -49,7 +48,7 @@ hs.hotkey.bind({}, 'F10', recbind.recursiveBind({
       [singleKey('p', 'Play/Pause')] = hs.spotify.playpause,
       [singleKey('n', 'Next')] = hs.spotify.next,
       [singleKey('b', 'Back')] = hs.spotify.previous,
-      [singleKey('s', 'Switch output')] = outputDeviceTable(),
+      [singleKey('s', 'Switch output')] = outputDeviceTable,
       [singleKey('d', 'Display')] = function()
           local artist = hs.spotify.getCurrentArtist()
           local track = hs.spotify.getCurrentTrack()
