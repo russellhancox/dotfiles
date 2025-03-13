@@ -16,3 +16,4 @@ require 'keys'
 -- MicMute
 micmute = hs.loadSpoon('MicMute')
 micmute:bindHotkeys({toggle={'', 'F19'}}, 0.1)
+micmute:bindHotkeys({toggle={'', 'F15'}}, 0.0)

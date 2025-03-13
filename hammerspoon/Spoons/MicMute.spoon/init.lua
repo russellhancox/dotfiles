@@ -50,9 +50,6 @@ end
 ---   * toggle - This will cause the microphone mute status to be toggled. Hold for momentary, press quickly for toggle.
 ---  * latch_timeout - Time in seconds to hold the hotkey before momentary mode takes over, in which the mute will be toggled again when hotkey is released. Latch if released before this time. 0.75 for 750 milliseconds is a good value.
 function obj:bindHotkeys(mapping, latch_timeout)
-	if (self.hotkey) then
-		self.hotkey:delete()
-	end
 	local mods = mapping["toggle"][1]
 	local key = mapping["toggle"][2]
 
