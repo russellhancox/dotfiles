@@ -1,10 +1,12 @@
 [user]
   email = russell@hancox.us
   name = Russell Hancox
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBMUOn9QX9jzzLb3Uox+8LvUaWy1536uEHbwRTrG2RXv
 
 [alias]
   vimdiff = "difftool -y -t vimdiff -R"
   cm = "commit"
+  ca = "commit --interactive -m"
   st = "status -sb"
   lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
   purr = "pull --rebase"
@@ -18,4 +20,12 @@
   algorithm = patience
 
 [url "ssh://git@github.com/"]
-    insteadOf = https://github.com/
+  insteadOf = https://github.com/
+
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+  gpgsign = true
+
