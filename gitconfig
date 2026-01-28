@@ -6,12 +6,15 @@
 [alias]
   vimdiff = "difftool -y -t vimdiff -R"
   cm = "commit"
-  ca = "commit --interactive -m"
+  co = "checkout"
+  ca = "commit -a --amend --no-edit"
+  pf = "push origin -f"
   st = "status -sb"
   lg = "log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
   purr = "pull --rebase"
   graph = "log --graph --oneline --all"
   ignored = "ls-files --others -i --exclude-standard"
+  wip = "commit -a -m 'WIP'"
 
 [push]
   default = current
@@ -29,3 +32,10 @@
 [commit]
   gpgsign = true
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[fetch]
+	prune = true
