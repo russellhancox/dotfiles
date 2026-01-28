@@ -14,9 +14,13 @@ obj.author = "dctucker <dctucker@github.com>"
 obj.homepage = "https://dctucker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
+function obj:muted()
+  return (hs.audiodevice.defaultInputDevice():volume() == 0)
+end
+
 function obj:updateMicMute(muted)
 	if muted == -1 then
-		muted = hs.audiodevice.defaultInputDevice():muted()
+		muted = obj:muted()
 	end
 	if muted then
 		obj.mute_menu:setTitle("🔇")
@@ -33,12 +37,13 @@ end
 ---  * None
 function obj:toggleMicMute()
 	local mic = hs.audiodevice.defaultInputDevice()
-	if mic:muted() then
-		mic:setInputMuted(false)
+	if mic:volume() == 0 then
+		mic:setInputVolume(50)
+		obj:updateMicMute(false)
 	else
-		mic:setInputMuted(true)
+		mic:setInputVolume(0)
+		obj:updateMicMute(true)
 	end
-	obj:updateMicMute(-1)
 end
 
 --- MicMute:bindHotkeys(mapping, latch_timeout)
