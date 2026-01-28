@@ -33,11 +33,12 @@ bindkey "^[[3;5~" delete-char
 
 # Configure completion
 autoload -Uz compinit
+compinit
 fpath=( ~/.zsh/completion $fpath )
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/completion-cache
-compinit
 
 # Generic aliases
 alias l="ls"
@@ -86,6 +87,8 @@ case `uname` in
       alias ls="ls -OGh"                            # Show file flags, colorized output and human file sizes
       alias catplist="plutil -convert xml1 -o -"    # cat a plist even if it's binary
       alias xcopen="X=\$(pwd); while [[ "\${X}" != "/" ]]; do PROJ=\$(find \${X} -name '*.xcworkspace' -maxdepth 1 -prune -print -quit); [[ -z \${PROJ} ]] && PROJ=\$(find \${X} -name '*.xcodeproj' -maxdepth 1 -prune -print -quit); if [[ -n \${PROJ} ]]; then open \${PROJ}; break; fi; X=\$(dirname \${X}); done"
+      alias lsregister="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
+      alias cloudlogin="gcloud auth login --update-adc && aws sso login"
 
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
       ;;
@@ -120,3 +123,4 @@ fi
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.zshrc.local" ]] && source ${HOME}/.zshrc.local
+
