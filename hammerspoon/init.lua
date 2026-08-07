@@ -5,6 +5,7 @@ mash = {"cmd", "alt", "ctrl"}
 -- Caffeinate
 caf = hs.loadSpoon('Caffeine')
 caf:start()
+hs.hotkey.bind({}, 'F18', function() caf:clicked() end)
 
 -- Window movement config
 require 'windows'

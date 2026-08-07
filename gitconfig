@@ -39,3 +39,5 @@
 	required = true
 [fetch]
 	prune = true
+[coderabbit]
+	machineId = cli/4d2b8356341d458f903f20ac6cda39e3
