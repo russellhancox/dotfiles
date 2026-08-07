@@ -121,6 +121,17 @@ if [[ -e "/opt/homebrew" ]]; then
   compinit
 fi
 
+# Load starship - fall back to the ASCII-only config where a Nerd Font is unlikely.
+# Set STARSHIP_CONFIG yourself (e.g. in .zshrc.local) to force either one.
+if [[ -z "${STARSHIP_CONFIG}" ]]; then
+  [[ -r "${HOME}/.config/starship/plain.toml" ]] && export STARSHIP_CONFIG="${HOME}/.config/starship/plain.toml"
+
+  if [[ "${TERM}" == (*-ghostty) && -r "${HOME}/.config/starship/fancy.toml" ]]; then
+    export STARSHIP_CONFIG="${HOME}/.config/starship/fancy.toml"
+  fi
+fi
+eval "$(starship init zsh)"
+
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.zshrc.local" ]] && source ${HOME}/.zshrc.local
 
