@@ -2,13 +2,6 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Git prompt support
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM="auto verbose"
-source ~/.dotfiles/git-prompt.sh
-setopt PROMPT_SUBST
-
 # Load colors
 autoload -U colors && colors
 export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(8~|.../%7~|%~) %{$fg[red]%}%(?..{%?} )%{$fg[green]%}"'$(__git_ps1 "[%s]")'$'\n'"%{$fg[blue]%}» %{$reset_color%}"
