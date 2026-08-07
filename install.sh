@@ -16,6 +16,11 @@ function symlinks {
     echo "Symlinking ${HOME}/.dotfiles/${f} to ${HOME}/.${f}"
     ln -sf ${HOME}/.dotfiles/${f} ${HOME}/.${f}
   done
+
+  for f in ${HOME}/.dotfiles/config/*; do
+    echo "Symlinking ${HOME}/.dotfiles/config/${f} to ${HOME}/.config/${f}"
+    ln -sf ${HOME}/.dotfiles/config/${f} ${HOME}/.config/${f}
+  done
 }
 
 function mac_defaults {
@@ -25,18 +30,11 @@ function mac_defaults {
   fi
 }
 
-function vim_settings {
-  echo "Installing Vim plugins"
-  vim -N -u ${HOME}/.vim/config/bundles.vim +PlugInstall! +quitall
-}
-
 function all {
   symlinks && \
     mac_defaults && \
-    vim_settings
 }
 
 [[ "${@}" == *-symlinks* ]] && symlinks
 [[ "${@}" == *'-mac_defaults'* ]] && mac_defaults
-[[ "${@}" == *'-vim'* ]] && vim_settings
 [[ "${@}" == *'-all'* ]] && all
