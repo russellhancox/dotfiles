@@ -9,7 +9,7 @@ export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(8~|.../%7~|%~) %{$fg[red]%}%(?..
 # Set word boundaries for back/forward words
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-# I use Vim
+# I use Vim/nvim
 hash vim >/dev/null 2>&1 && export EDITOR='vim'
 
 # Set some options
@@ -32,6 +32,16 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/completion-cache
+
+# Load Homebrew completions
+if [[ -e "/opt/homebrew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  FPATH=$FPATH:/opt/homebrew/share/zsh/site-functions
+  compinit
+fi
+
+# Configure autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Generic aliases
 alias l="ls"
@@ -107,13 +117,6 @@ function man() {
   /usr/bin/man "$@"
 }
 
-# Load Homebrew
-if [[ -e "/opt/homebrew" ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  FPATH=$FPATH:/opt/homebrew/share/zsh/site-functions
-  compinit
-fi
-
 # Load starship - fall back to the ASCII-only config where a Nerd Font is unlikely.
 # Set STARSHIP_CONFIG yourself (e.g. in .zshrc.local) to force either one.
 if [[ -z "${STARSHIP_CONFIG}" ]]; then
@@ -128,3 +131,5 @@ eval "$(starship init zsh)"
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.zshrc.local" ]] && source ${HOME}/.zshrc.local
 
+# Enable syntax highlighting. This needs to be near the end to avoid being unloaded by other modules.
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
