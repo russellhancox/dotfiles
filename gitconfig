@@ -22,15 +22,16 @@
 [diff]
   algorithm = patience
 
+; Push over SSH, but clone and fetch over HTTPS so a machine without keys yet
+; can still bootstrap. Private repos need `gh auth login` for the fetch side.
 [url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+  pushInsteadOf = https://github.com/
 
-[gpg]
-  format = ssh
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-[commit]
-  gpgsign = true
+; Commit signing lives here because the 1Password signer is at a different
+; path on each OS. home-manager links the right gitconfig-<os> into place.
+; Git ignores a missing include, so an unmanaged machine just doesn't sign.
+[include]
+  path = ~/.gitconfig.os
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f

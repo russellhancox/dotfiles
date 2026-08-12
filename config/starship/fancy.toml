@@ -108,8 +108,9 @@ show_milliseconds = true
 format = '[  in $duration]($style)'
 style = "fg:overlay1"
 disabled = false
-show_notifications = true
-min_time_to_notify = 45000
+# Left off deliberately: starship dispatches the macOS notification
+# synchronously, blocking the prompt for ~2s after every long command.
+show_notifications = false
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

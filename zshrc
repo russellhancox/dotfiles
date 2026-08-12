@@ -2,15 +2,27 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Load colors
-autoload -U colors && colors
-export PS1="%{$fg[yellow]%}%n@%m %{$fg[blue]%}%(8~|.../%7~|%~) %{$fg[red]%}%(?..{%?} )%{$fg[green]%}"'$(__git_ps1 "[%s]")'$'\n'"%{$fg[blue]%}» %{$reset_color%}"
+# Nix. On macOS nix-darwin manages /etc/zshrc for this. On Linux the installer
+# only writes /etc/profile.d, which zsh never reads - not even in login shells -
+# so the profile has to go on PATH here. Must come before anything that looks
+# for a Nix-installed binary.
+typeset -U path                                   # keep PATH free of duplicates
+[[ -d /nix/var/nix/profiles/default/bin ]] && path=(/nix/var/nix/profiles/default/bin $path)
+[[ -d "${HOME}/.nix-profile/bin" ]] && path=("${HOME}/.nix-profile/bin" $path)
+[[ -r "${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh" ]] &&
+  source "${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
 # Set word boundaries for back/forward words
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-# I use Vim/nvim
-hash vim >/dev/null 2>&1 && export EDITOR='vim'
+# I use Vim/nvim. Prefer nvim where it exists, fall back to vim where it doesn't.
+if hash nvim >/dev/null 2>&1; then
+  export EDITOR='nvim'
+  alias vi="nvim"
+  alias vim="nvim"
+elif hash vim >/dev/null 2>&1; then
+  export EDITOR='vim'
+fi
 
 # Set some options
 setopt AUTOCD               # Automatically change to typed directories
@@ -37,11 +49,18 @@ zstyle ':completion:*' cache-path ~/.zsh/completion-cache
 if [[ -e "/opt/homebrew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   FPATH=$FPATH:/opt/homebrew/share/zsh/site-functions
+
+  # brew's own completions live in the Nix store since nix-homebrew took over
+  # the prefix - only formula completions still land in site-functions above.
+  # Resolve the managed symlink each time so the path follows store updates.
+  [[ -L /opt/homebrew/Library/Homebrew ]] &&
+    FPATH=$FPATH:${$(readlink /opt/homebrew/Library/Homebrew):h:h}/completions/zsh
+
   compinit
 fi
 
-# Configure autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Configure autosuggestions. home-manager links this out of the Nix store.
+[[ -r ~/.zsh/plugins/zsh-autosuggestions.zsh ]] && source ~/.zsh/plugins/zsh-autosuggestions.zsh
 
 # Generic aliases
 alias l="ls"
@@ -92,12 +111,14 @@ case `uname` in
       alias xcopen="X=\$(pwd); while [[ "\${X}" != "/" ]]; do PROJ=\$(find \${X} -name '*.xcworkspace' -maxdepth 1 -prune -print -quit); [[ -z \${PROJ} ]] && PROJ=\$(find \${X} -name '*.xcodeproj' -maxdepth 1 -prune -print -quit); if [[ -n \${PROJ} ]]; then open \${PROJ}; break; fi; X=\$(dirname \${X}); done"
       alias lsregister="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
       alias cloudlogin="gcloud auth login --update-adc && aws sso login"
+      alias nix-rebuild="sudo darwin-rebuild switch --flake ~/.dotfiles#mac"
 
       export HOSTNAME=$(scutil --get ComputerName)  # The normal hostname is often useless
       ;;
   "Linux")
       alias ls="ls --color -h"                      # Show colorized output and human file sizes
       alias ps="ps f"                               # Show processes as an ASCII tree
+      alias nix-rebuild='home-manager switch -b hm-bak --flake ~/.dotfiles#linux-$(uname -m)'
 
       export HOSTNAME=$(echo $HOSTNAME | cut -d . -f 1)
 
@@ -126,10 +147,10 @@ if [[ -z "${STARSHIP_CONFIG}" ]]; then
     export STARSHIP_CONFIG="${HOME}/.config/starship/fancy.toml"
   fi
 fi
-eval "$(starship init zsh)"
+hash starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # If a local customization file exists, use it..
 [[ -e "${HOME}/.zshrc.local" ]] && source ${HOME}/.zshrc.local
 
 # Enable syntax highlighting. This needs to be near the end to avoid being unloaded by other modules.
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -r ~/.zsh/plugins/zsh-syntax-highlighting.zsh ]] && source ~/.zsh/plugins/zsh-syntax-highlighting.zsh

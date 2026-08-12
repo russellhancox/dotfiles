@@ -1,0 +1,69 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__pencil"
+    ],
+    "deny": [
+      "Read(//Users/rah/Library/Group Containers/2BUA8C4S2C.com.1password/**)",
+      "Read(//Users/rah/Library/Messages/**)"
+    ]
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay -v 0.6 ~/.claude/sounds/chime.mp3",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/rah/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "ccstatusline",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "coderabbit@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
+    "swift-lsp@claude-plugins-official": true,
+    "ponytail@ponytail": true
+  },
+  "extraKnownMarketplaces": {
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
+  "syntaxHighlightingDisabled": false,
+  "tui": "default",
+  "theme": "dark",
+  "preferredNotifChannel": "notifications_disabled",
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true,
+  "showStatusInTerminalTab": true,
+  "alwaysThinkingEnabled": true,
+  "remoteControlAtStartup": true,
+  "effortLevel": "xhigh"
+}

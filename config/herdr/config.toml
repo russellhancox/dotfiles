@@ -1,0 +1,30 @@
+onboarding = false
+[ui]
+agent_panel_sort = "priority"
+
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "system"
+
+[terminal]
+# Don't inherit the source workspace's cwd. "follow" is the default.
+new_cwd = "home"
+
+[keys]
+previous_tab = ["prefix+p", "alt+left"]
+next_tab = ["prefix+n", "alt+right"]
+previous_workspace = "alt+up"
+next_workspace = "alt+down"
+
+[[keys.command]]
+key = "prefix+up"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.projects"
+description = "herdr-plus: projects"
+
+[[keys.command]]
+key = "prefix+down"
+type = "plugin_action"
+command = "cloudmanic.herdr-plus.quick-actions"
+description = "herdr-plus: quick actions"

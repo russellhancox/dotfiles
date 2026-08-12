@@ -1,0 +1,4 @@
+# Read by ripgrep and by Claude Code's workspace file scan.
+# Keeps a scan rooted at $HOME out of TCC-protected and secret-bearing dirs.
+Library/Messages/
+Library/Group Containers/2BUA8C4S2C.com.1password/

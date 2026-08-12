@@ -5,3 +5,13 @@ font-size = 22
 
 window-inherit-working-directory = false
 tab-inherit-working-directory = false
+
+# Send Option as Alt so herdr sees alt+arrow chords.
+macos-option-as-alt = true
+
+# Ghostty defaults rewrite alt+arrow_left/right to esc:b / esc:f (word motion),
+# which swallows them before herdr's tab bindings see an alt+left/right chord.
+# Unbind so the standard CSI modified-arrow sequence reaches herdr.
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
+
